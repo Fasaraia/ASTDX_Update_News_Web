@@ -128,13 +128,17 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        /* Apply the animation */
+        
     }
 
     .main-header.gradient-text .letter {
         -webkit-text-fill-color: transparent;
-        background: linear-gradient(45deg, #ff8a00, #e52e71);
+        background: linear-gradient(45deg, #ff0062, #ab2ee5, #a00078, #ff0000); 
         -webkit-background-clip: text;
         background-clip: text;
+        background-size: 1000% auto; 
+        animation: gradient-flow 6s linear infinite; 
     }
     
     .main-header .letter {
@@ -156,6 +160,12 @@
         font-weight: 300;
         max-width: 650px;
         opacity: 0; 
+    }
+
+    @keyframes gradient-flow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
   </style>
