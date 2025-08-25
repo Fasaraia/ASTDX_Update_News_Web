@@ -24,7 +24,6 @@
       overflow: hidden;
     }
 
-    /* animated text layers across full body */
     .text-container {
       position: fixed;
       bottom: 250px; left: 0;
@@ -79,12 +78,17 @@
     .replicated-background {
       top: 100px;
       width: 90%;
+      max-width: 1200px; 
       height: 100%;
       border-radius: 12px;
       border: 3px solid #111;
       background: #2e2e2e;
       z-index: 1;
       position: relative;
+      font-family: 'Fredoka', sans-serif; /*WE LOVE FREDOKA*/
+      color: #e0e0e0;
+      padding: 40px;
+      box-sizing: border-box; 
     }
 
     /* music player */
@@ -108,20 +112,52 @@
       color: white;
       cursor: pointer;
     }
-
-    #bars {
-      display: flex;
-      gap: 4px;
-      align-items: flex-end;
-      height: 30px;
+    
+    .content-wrapper {
+        padding-right: 150px; 
     }
 
-    #bars div {
-      width: 4px;
-      height: 10px;
-      background: #0f0;
-      border-radius: 2px;
+    .main-header {
+        font-size: 4.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.1;
     }
+    
+    .gradient-text {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .main-header.gradient-text .letter {
+        -webkit-text-fill-color: transparent;
+        background: linear-gradient(45deg, #ff8a00, #e52e71);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+    
+    .main-header .letter {
+        display: inline-block;
+        opacity: 0; 
+    }
+
+    .sub-text {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        opacity: 0; 
+    }
+
+    .paragraph-block {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        font-weight: 300;
+        max-width: 650px;
+        opacity: 0; 
+    }
+
   </style>
 </head>
 <body>
@@ -148,23 +184,70 @@
 
   <!-- grey box with music player -->
   <div class="replicated-background">
-        <!-- Audio -->
+    <!-- Audio -->
     <audio id="audio-player" src="assets/All Star Tower Defense Lobby Music (Roblox) [LaTale Music - May Be Happy].mp3" loop></audio>
 
     <!-- Controls -->
     <div class="music-player">
       <button id="play-pause">▶</button>
-      <div class="music-bars">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+      <div id="bars"> 
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
+    
+    <!-- --- NEW: Placeholder Content --- -->
+    <div class="content-wrapper">
+      <h1 class="main-header gradient-text">Banana</h1>
+      <p class="sub-text">Banana le koishi</p>
+      <div class="paragraph-block">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.</p>
+        <p>Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.</p>
+      </div>
+    </div>
+
   </div>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script src="assets/musicplayer.js"></script>
+  
+  <!-- --- Anime.js script for text effects --- -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // --- Effect 1: Letter-by-letter animation for the main header ---
+      const header = document.querySelector('.main-header');
+      header.innerHTML = header.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+      
+      const tl = anime.timeline({
+        easing: 'easeOutExpo',
+        duration: 750
+      });
+
+      tl.add({
+        targets: '.main-header .letter',
+        translateY: [20, 0], // Move up
+        opacity: [0, 1],       // Fade in
+        duration: 1200,
+        delay: anime.stagger(50) 
+      })
+      .add({
+        targets: '.sub-text',
+        translateY: [15, 0],
+        opacity: [0, 1],
+        duration: 800,
+      }, '-=800') // Overlap 
+      .add({
+        targets: '.paragraph-block',
+        translateY: [15, 0],
+        opacity: [0, 1],
+        duration: 800,
+      }, '-=600'); // Overlap 
+
+    });
+  </script>
 </body>
 </html>
-
