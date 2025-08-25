@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banana Unit Profile</title>
+  <title>ASTDX Update Log</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,12 +39,8 @@
     }
 
     .background-design {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; z-index: -1;
       background-color: var(--bg-dark);
       background-image:
         repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(255, 255, 255, 0.04) 50px),
@@ -106,9 +102,8 @@
     .music-player {
       position: absolute; top: 20px; right: 20px;
       display: flex; align-items: center; gap: 12px;
-      background: rgba(30, 30, 30, 0.7); /* Semi-transparent background */
-      backdrop-filter: blur(8px); /* The frosted glass effect */
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(30, 30, 30, 0.7);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       padding: 10px 15px; border-radius: 8px;
       border: 1px solid var(--border-color);
       box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 10;
@@ -123,7 +118,6 @@
     .main-header {
       font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 700;
       line-height: 1.2; margin: 0; opacity: 0;
-      
     }
     .main-header .letter {
       display: inline-block; -webkit-text-fill-color: transparent;
@@ -147,13 +141,12 @@
     }
 
     .content-box {
-      background-color: rgba(30, 30, 30, 0.7); /* Semi-transparent background */
-      backdrop-filter: blur(8px); /* The frosted glass effect */
-      -webkit-backdrop-filter: blur(8px);
+      background-color: rgba(30, 30, 30, 0.7);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       border: 1px solid var(--border-color); border-radius: 8px;
       padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0;
     }
-    .content-box h3 {
+    .content-box h2 {
       margin-top: 0; font-weight: 600; color: var(--accent-green);
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 10px; margin-bottom: 15px;
@@ -163,9 +156,36 @@
       font-size: 1.1rem; line-height: 1.6;
       font-weight: 300; margin: 0.5rem 0;
     }
-
-    .highlight-number-green { font-weight: 700; color: #00ff6a; }
-    .highlight-number-red { font-weight: 700; color: #ff4d4d; }
+    
+    /* --- NEW STYLES for Unit Grid --- */
+    .unit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1rem;
+      padding-top: 1rem;
+    }
+    .unit-card {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.5rem;
+      padding: 0.75rem; border: 2px solid transparent;
+      border-radius: 10px; background-color: var(--bg-dark);
+      transition: all 0.2s ease-in-out; text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0; /* Hide for animation */
+    }
+    .unit-card:hover {
+      border-color: var(--accent-green);
+      transform: translateY(-3px);
+    }
+    .unit-card img {
+      width: 90px; height: 90px;
+      object-fit: cover; border-radius: 8px;
+    }
+    .unit-card p {
+      font-size: 0.85rem; font-weight: 500;
+      color: var(--text-primary); text-transform: capitalize;
+    }
+    /* --- END of Unit Grid Styles --- */
 
     @media (max-width: 768px) {
       body { padding: 1rem; }
@@ -200,36 +220,57 @@
         
         <div class="box-container">
           <div class="content-box">
-            <h2>Unit Changes</h2>
-            <p>Banana is a koishi which is a banana</p>
-              <div class="content-box">
-                <h3>New Units</h3>
-                <p>Banana is a koishi which is a banana</p>
-              </div>
-            </div>
+            <h2>New Unit Additions</h2>
+            <div id="new-units-grid" class="unit-grid"></div>
+          </div>
+          
+          <!-- Other changelog sections -->
+          <div class="content-box">
+            <h2>Balance Changes</h2>
+            <p><strong>Sorcerer Killer:</strong> Increased base damage at Upgrade 5 by 10%.</p>
+            <p><strong>Cursed Talker:</strong> Reduced SPA at max upgrade from 4.5 to 5.</p>
           </div>
 
-        <div class="box-container">
           <div class="content-box">
-            <h2>Box Container 2</h2>
-            <p>Banana is a koishi which is a banana</p>
-          </div>
-        </div>
-
-        <div class="box-container">
-          <div class="content-box">
-            <h2>Box Container 3</h2>
-            <p>Banana is a koishi which is a banana</p>
+            <h2>System Updates & Bug Fixes</h2>
+            <p>Fixed a bug where the 'Tempest' trait was not applying its DoT bonus correctly.</p>
+            <p>Improved server performance during late-game waves.</p>
           </div>
         </div>
       </div>
     </section>
   </main>
   
+  <!-- Make sure you have this file -->
   <script src="assets/musicplayer.js"></script>
+
+  <!-- IMPORTANT: Load the new unit data file BEFORE the main script -->
+  <script src="changelog-units.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const populateNewUnits = () => {
+        const gridContainer = document.getElementById('new-units-grid');
+        if (!gridContainer) return; 
+        
+        
+        if (typeof newUnitsData !== 'undefined' && newUnitsData.length > 0) {
+          const cardsHTML = newUnitsData.map(unit => `
+            <div class="unit-card">
+              <img src="${unit.image}" alt="${unit.name}">
+              <p>${unit.name}</p>
+            </div>
+          `).join('');
+          
+          gridContainer.innerHTML = cardsHTML;
+        } else {
+          gridContainer.innerHTML = "<p>No new units in this update.</p>";
+        }
+      };
+      
+      populateNewUnits(); 
+
+      // --- ANIME.JS ANIMATION SEQUENCE ---
       const header = document.querySelector('.main-header');
       header.innerHTML = header.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
       
@@ -255,8 +296,14 @@
       .add({
         targets: '.content-box',
         translateY: [20, 0], opacity: [0, 1],
-        duration: 900, delay: anime.stagger(150)
-      }, '-=700');
+      }, '-=700')
+      // Add a new animation step for the unit cards inside the grid
+      .add({
+        targets: '.unit-card',
+        translateY: [15, 0],
+        opacity: [0, 1],
+        delay: anime.stagger(80) // Stagger the appearance of each card
+      }, '-=800'); // Overlap this animation with the content box animation
     });
   </script>
 </body>
