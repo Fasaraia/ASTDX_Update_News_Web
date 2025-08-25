@@ -27,11 +27,7 @@
       --font-jp: 'Noto Sans JP', sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: var(--font-main);
@@ -40,550 +36,414 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 2rem;
+      align-items: flex-start;
+      padding: 4rem 2rem;
     }
 
     #loader-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--bg-dark);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: var(--bg-dark); display: flex; flex-direction: column;
+      justify-content: center; align-items: center; z-index: 9999;
       transition: opacity 0.5s ease-in-out;
     }
-
     #loader-bar-container {
-      width: 80%;
-      max-width: 400px;
-      height: 10px;
-      background-color: var(--border-color);
-      border-radius: 5px;
-      overflow: hidden;
+      width: 80%; max-width: 400px; height: 10px;
+      background-color: var(--border-color); border-radius: 5px; overflow: hidden;
     }
-
     #loader-progress {
-      width: 0%;
-      height: 100%;
-      background-color: var(--accent-green);
-      border-radius: 5px;
-      transition: width 0.2s linear;
+      width: 0%; height: 100%; background-color: var(--accent-green);
+      border-radius: 5px; transition: width 0.2s linear;
     }
-
-    #loader-text {
-      margin-top: 1rem;
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
+    #loader-text { margin-top: 1rem; font-size: 1rem; color: var(--text-secondary); }
 
     main {
-      width: 100%;
-      max-width: 1400px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s ease;
+      width: 100%; max-width: 1400px; opacity: 0;
+      visibility: hidden; transition: opacity 0.5s ease;
     }
-
-    main.loaded {
-      opacity: 1;
-      visibility: visible;
-    }
+    main.loaded { opacity: 1; visibility: visible; }
 
     .background-design {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background-color: var(--bg-dark);
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1; background-color: var(--bg-dark);
       background-image: repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(255, 255, 255, 0.04) 50px),
         repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(255, 255, 255, 0.04) 50px),
         radial-gradient(ellipse at 50% 0%, rgb(0, 0, 0) 0%, transparent 70%),
         linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light-dark) 100%);
-      background-size: 50px 50px,
-        50px 50px,
-        100% 100%,
-        100% 100%;
+      background-size: 50px 50px, 50px 50px, 100% 100%, 100% 100%;
     }
 
     .content-card {
-      background-color: var(--card-bg);
-      border-radius: 15px;
+      background-color: var(--card-bg); border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       border: 1px solid var(--border-color);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
 
     .hiragana-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
       background: linear-gradient(to right, #1d1d1d, #000000);
     }
-
     .hiragana-background::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;
       --stripe-opacity: 0.6;
       background: repeating-linear-gradient(135deg, transparent, transparent 7px, rgba(0, 0, 0, var(--stripe-opacity)) 7px, rgba(0, 0, 0, var(--stripe-opacity)) 12px);
     }
-
     .hiragana-background .text-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 3; display: flex; flex-direction: column; justify-content: center;
     }
-
     .hiragana-background .text-layer {
-      width: 200%;
-      display: flex;
-      font-family: var(--font-jp);
-      font-weight: 900;
-      white-space: nowrap;
-      user-select: none;
-      line-height: 0.9;
-      rotate: -10deg;
-      font-size: 20rem;
+      width: 200%; display: flex; font-family: var(--font-jp); font-weight: 900;
+      white-space: nowrap; user-select: none; line-height: 0.9;
+      rotate: -10deg; font-size: 50rem;
       background: linear-gradient(45deg, #ffffff, #303030);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      opacity: 0.08;
+      -webkit-background-clip: text; background-clip: text; color: transparent; opacity: 0.08;
     }
-
-    .hiragana-background .text-layer span {
-      display: block;
-      width: 50%;
-      padding: 0 20px;
-    }
-
-    .hiragana-background .layer-1 {
-      animation: scroll-right 40s linear infinite;
-    }
-
-    .hiragana-background .layer-2 {
-      animation: scroll-left 40s linear infinite;
-    }
-
-    .hiragana-background .layer-3 {
-      animation: scroll-right 40s linear infinite;
-    }
-
-    .hiragana-background .layer-4 {
-      animation: scroll-left 40s linear infinite;
-    }
-
-    @keyframes scroll-right {
-      from {
-        transform: translateX(-50%);
-      }
-
-      to {
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes scroll-left {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
+    .hiragana-background .text-layer span { display: block; width: 50%; padding: 0 20px; }
+    .hiragana-background .layer-1 { animation: scroll-right 40s linear infinite; }
+    .hiragana-background .layer-2 { animation: scroll-left 40s linear infinite; }
+    .hiragana-background .layer-3 { animation: scroll-right 40s linear infinite; }
+    .hiragana-background .layer-4 { animation: scroll-left 40s linear infinite; }
+    @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     .content-wrapper {
-      position: relative;
-      z-index: 5;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      position: relative; z-index: 5; padding: 40px;
+      display: flex; flex-direction: column; gap: 1rem;
     }
 
     .music-player {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(30, 30, 30, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 10px 15px;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      z-index: 10;
+      position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 12px;
+      background: rgba(30, 30, 30, 0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border-color);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); z-index: 10;
     }
-
     .music-player button {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: color 0.2s ease, transform 0.2s ease;
+      background: none; border: none; font-size: 1.2rem; color: var(--text-primary);
+      cursor: pointer; transition: color 0.2s ease, transform 0.2s ease;
     }
-
-    .music-player button:hover {
-      color: var(--accent-green);
-      transform: scale(1.1);
-    }
+    .music-player button:hover { color: var(--accent-green); transform: scale(1.1); }
 
     .main-header {
-      font-size: clamp(3rem, 6vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin: 0;
-      opacity: 0;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700; line-height: 1.1; margin: 0; opacity: 0;
+    }
+    .sub-text {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 400; margin: 0; color: var(--text-secondary); opacity: 0;
+      margin-bottom: 2rem;
     }
 
     .main-header .letter {
-      display: inline-block;
-      -webkit-text-fill-color: transparent;
+      display: inline-block; -webkit-text-fill-color: transparent;
       background: linear-gradient(45deg, #009dff, #087dd7, #009dff, #087dd7);
-      -webkit-background-clip: text;
-      background-clip: text;
-      background-size: 300% auto;
+      -webkit-background-clip: text; background-clip: text; background-size: 300% auto;
       animation: gradient-flow 6s linear infinite;
     }
-
-    @keyframes gradient-flow {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    .sub-text {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      font-weight: 400;
-      margin: 0;
-      color: var(--text-secondary);
-      opacity: 0;
-    }
-
+    @keyframes gradient-flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    
     .content-box {
-      background-color: rgba(30, 30, 30, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      opacity: 0;
+      background-color: rgba(30, 30, 30, 0.7); backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px); border: 1px solid var(--border-color);
+      border-radius: 8px; padding: 25px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); opacity: 0;
     }
-
     .content-box h2 {
-      margin-top: 0;
-      font-weight: 600;
-      color: var(--accent-green);
+      margin-top: 0; font-weight: 600; color: var(--accent-green);
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 10px;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      padding-bottom: 10px; margin-bottom: 15px;
+      text-transform: uppercase; letter-spacing: 1px;
     }
-
-    .content-box p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      font-weight: 300;
-      margin: 0.5rem 0;
+    .content-box p { font-size: 1.1rem; line-height: 1.6; font-weight: 300; margin: 0.5rem 0; }
+    
+    .timeline-container { display: flex; flex-direction: column; gap: 3rem; }
+    .timeline-item { display: grid; grid-template-columns: 50px 1fr; gap: 20px; }
+    .timeline-marker { position: relative; width: 100%; }
+    .timeline-marker::before {
+      content: ''; position: absolute; top: 18px; left: 50%;
+      transform: translateX(-50%); width: 4px; height: 100%;
+      background: var(--border-color); border-radius: 2px;
     }
+    .timeline-marker::after {
+      content: ''; position: absolute; top: 18px; left: 50%;
+      transform: translateX(-50%) translateY(-50%); width: 22px; height: 22px;
+      border-radius: 50%; background: var(--accent-green);
+      border: 4px solid var(--card-bg); z-index: 1;
+    }
+    .update-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; opacity: 0; }
+    .update-date { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem; opacity: 0; }
 
     .unit-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 1rem;
-      padding-top: 1rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1rem; padding-top: 1rem;
     }
-
     .unit-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      background-color: var(--bg-dark);
-      transition: all 0.2s ease-in-out;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      padding: 0.75rem; border: 2px solid transparent; border-radius: 10px;
+      background-color: var(--bg-dark); transition: all 0.2s ease-in-out;
+      text-align: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0; cursor: pointer;
     }
-
-    .unit-card:hover {
-      border-color: var(--accent-blue);
-      transform: translateY(-3px);
-    }
-
+    .unit-card:hover { border-color: var(--accent-blue); transform: translateY(-3px); }
     .unit-card.selected {
-      border-color: var(--accent-green);
-      transform: translateY(-3px);
+      border-color: var(--accent-green); transform: translateY(-3px);
       box-shadow: 0 0 10px rgba(0, 255, 163, 0.5);
     }
+    .unit-card img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; }
+    .unit-card p { font-size: 0.85rem; font-weight: 500; color: var(--text-primary); text-transform: capitalize; }
 
-    .unit-card img {
-      width: 90px;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
+    .logo img { width: 500px; height: auto; }
+    .logo { text-align: center; }
 
-    .unit-card p {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      text-transform: capitalize;
-    }
-
-    .logo img {
-      width: 500px;
-      height: auto;
-    }
-
-    .logo {
-      text-align: center;
-    }
-
-    /* --- Layout & Details Panel Styles --- */
-    .changelog-layout {
-      display: grid;
-      grid-template-columns: 2fr 1.2fr;
-      gap: 25px;
-      margin-top: 1rem;
-    }
+    .changelog-layout { display: grid; grid-template-columns: 2fr 1.2fr; gap: 25px; }
+    .main-content-column { display: flex; flex-direction: column; gap: 25px; }
 
     #unit-details-panel {
-      background-color: rgba(30, 30, 30, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      position: sticky;
-      top: 2rem;
-      align-self: start;
+      background-color: rgba(30, 30, 30, 0.7); backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px); border: 1px solid var(--border-color);
+      border-radius: 8px; padding: 25px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      opacity: 0; position: sticky; top: 4rem; align-self: start;
     }
-
-    .details-placeholder {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      color: var(--text-secondary);
-      font-style: italic;
-    }
-
-    .details-content-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
+    .details-placeholder { display: flex; justify-content: center; align-items: center; height: 100%; color: var(--text-secondary); font-style: italic; }
+    .details-content-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
     
-    /* --- NEW/MODIFIED STYLES START HERE --- */
+    .details-header { display: flex; gap: 1.5rem; align-items: center; }
+    .details-title-group { display: flex; flex-direction: column; gap: 0.25rem; }
+    #details-unit-image { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border-color); flex-shrink: 0; }
+    #details-unit-name { font-size: 2.5rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; margin: 0; line-height: 1.1; }
+    .details-subheader { font-size: 1rem; font-weight: 600; text-transform: uppercase; color: var(--text-secondary); margin: 0; }
+    .details-subheader span { display: inline-block; }
+    .details-subheader .subheader-placement { color: #c9a449; }
     
-    .details-header {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-    
-    .details-title-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    #details-unit-image {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
-      flex-shrink: 0;
-    }
-
-    #details-unit-name {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-transform: uppercase;
-      margin: 0;
-      line-height: 1.1;
-    }
-
-    .details-subheader {
-        font-size: 1rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: var(--text-secondary); /* For the '•' separator */
-        margin: 0;
-    }
-    .details-subheader span {
-        display: inline-block; /* Helps with gradient rendering */
-    }
-    .details-subheader .subheader-placement {
-        color: #c9a449; /* Gold/bronze color for placement */
-    }
-    
-    .details-tags-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-
+    .details-tags-container { display: flex; flex-wrap: wrap; gap: 0.75rem; }
     .details-tag {
-        background-color: var(--bg-dark);
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        padding: 0.4rem 1rem;
-        font-size: 0.9rem;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
+      background-color: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 6px;
+      padding: 0.4rem 1rem; font-size: 0.9rem; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 0.5rem;
     }
-
     .tag-element.element-red { border-color: #ff8080; color: #ff8080; }
     .tag-element.element-green { border-color: #99ffc7; color: #99ffc7; }
     .tag-element.element-blue { border-color: #99c7ff; color: #99c7ff; }
     .tag-element.element-purple { border-color: #e4c2ff; color: #e4c2ff; }
     .tag-element.element-orange { border-color: #ffc799; color: #ffc799; }
+    .tag-method { border-color: var(--accent-blue); color: var(--accent-blue); }
     
-    .tag-method {
-        border-color: var(--accent-blue);
-        color: var(--accent-blue);
-    }
-    
-    .rarity-unbound {
-      background-image: linear-gradient(45deg, #c0392b, #8e44ad);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
+    .rarity-unbound { background-image: linear-gradient(45deg, #c0392b, #8e44ad); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .rarity-5-star {
       background-image: linear-gradient(45deg, #ff2400, #e8b71d, #1de840, #1ddde8, #2b1de8, #dd00f3, #ff2400);
-      background-size: 400% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: rainbow-flow 5s ease-in-out infinite;
+      background-size: 400% 100%; -webkit-background-clip: text; background-clip: text;
+      color: transparent; animation: rainbow-flow 5s ease-in-out infinite;
     }
-
-    /* Keyframes for the rainbow animation */
-    @keyframes rainbow-flow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    @keyframes rainbow-flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     
-    /* Highlight Classes */
     .highlight-text-green { color: var(--accent-green); font-weight: 500; }
     .highlight-text-blue { color: var(--accent-blue); font-weight: 500; }
     .highlight-text-red { color: var(--accent-red); font-weight: 500; }
 
-    /* Simple & Clean Passive Content Styling */
-    #details-unit-passive {
-      border-top: 1px solid var(--border-color);
-      padding-top: 1.25rem;
-      margin-top: 1.25rem;
+    #details-unit-passive { border-top: 1px solid var(--border-color); padding-top: 1.25rem; margin-top: 1.25rem; }
+    #details-unit-passive > strong { display: block; font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 1rem; }
+    .passive-columns { display: grid; grid-template-columns: repeat(var(--grid-columns, 1), 1fr); gap: 1.5rem; }
+    .passive-column { padding: 0; border-left: 2px solid var(--border-color); padding-left: 1rem; }
+    .passive-column h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+    .passive-column-content p { font-size: 0.95rem !important; color: var(--text-secondary) !important; line-height: 1.6 !important; margin: 0; }
+    .passive-column-content p + p { margin-top: 0.5em; }
+
+    .event-intro, .event-summary { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem !important; }
+    .rank-list {
+        list-style: none; padding: 0; margin: 1.5rem auto;           
+        display: flex;
+        flex-direction: column;          
+        gap: 0.75rem;
+        width: 320px;                    
+        max-width: 100%;
     }
-    #details-unit-passive > strong {
-      display: block;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-    .passive-columns {
-      display: grid;
-      grid-template-columns: repeat(var(--grid-columns, 1), 1fr);
-      gap: 1.5rem;
-    }
-    .passive-column {
-      padding: 0;
-      border-left: 2px solid var(--border-color);
-      padding-left: 1rem;
-    }
-    .passive-column h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-    .passive-column-content p {
-      font-size: 0.95rem !important;
-      color: var(--text-secondary) !important;
-      line-height: 1.6 !important;
-      margin: 0;
-    }
-    .passive-column-content p + p {
-        margin-top: 0.5em;
+    .rank-list li {
+        background: var(--bg-dark);
+        border: 1px solid var(--border-color);
+        padding: 0.65rem 0.9rem;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: 600;
+        width: 100%;                   
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
     }
 
-    /* Responsive adjustments */
+    .boss {
+  font-family: 'Fredoka', serif;
+  font-weight: 700;
+  line-height: 1.2; 
+  display: center;
+  align-items: center;
+  /* --- END FIX --- */
+  
+  /* All of our animations, including the new font flicker */
+  animation: 
+    glitch-top 1s linear infinite alternate-reverse, 
+    glitch-bottom 1.5s linear infinite alternate-reverse,
+    glitch-color 0.8s linear infinite,
+    glitch-font 2.1s steps(1, end) infinite;
+}
+
+
+/* --- ALL KEYFRAMES (UNCHANGED FROM PREVIOUS VERSION) --- */
+
+@keyframes glitch-top {
+  2%, 64% { transform: translate(2px, -2px); opacity: 0.8; }
+  4%, 60% { transform: translate(-2px, 2px); opacity: 0.8; }
+  62% { transform: translate(13px, -1px) skew(-13deg); opacity: 0.8; }
+}
+
+@keyframes glitch-bottom {
+  2%, 64% { transform: translate(-2px, 0); opacity: 0.8; }
+  4%, 60% { transform: translate(0, 2px); opacity: 0.8; }
+  62% { transform: translate(-22px, 5px) skew(21deg); opacity: 0.8; }
+}
+
+@keyframes glitch-color {
+  0% { text-shadow: none; }
+  5% { text-shadow: 2px 2px #ff003c, -2px -2px #00ffc3; }
+  15% { text-shadow: none; }
+  26% { text-shadow: -3px 0px #ff003c, 3px 0px #00ffc3; }
+  35% { text-shadow: none; }
+  55% { text-shadow: 0px 3px #ff003c, 0px -3px #00ffc3; }
+  68% { text-shadow: none; }
+  80% { text-shadow: 4px -2px #ff003c, -3px 1px #00ffc3; }
+  95% { text-shadow: none; }
+  100% { text-shadow: none; }
+}
+
+@keyframes glitch-font {
+  0%, 14%, 16%, 48%, 53%, 84%, 86%, 100% {
+    font-family: 'Fredoka', serif;
+  }
+  15% {
+    font-family: 'Cinzel', sans-serif;
+  }
+  50% {
+    font-family: 'Cinzel', sans-serif;
+  }
+  85% {
+    font-family: 'Cinzel', sans-serif;
+  }
+}
+
+    .contract-group { margin-bottom: 2rem; }
+    .contract-group-header {
+        display: flex; justify-content: space-between; align-items: baseline;
+        padding-bottom: 0.75rem; margin-bottom: 1rem;
+    }
+    .contract-group-header h3 { font-size: 1.25rem; margin: 0; color: var(--text-primary); }
+    .refresh-timer { font-size: 0.9rem; color: var(--text-secondary); font-style: italic; }
+
+    
+    .contract-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .contract-list li {
+      background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 1.1rem 1.15rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      overflow: visible; /* allow content to expand */
+      margin: 0;
+      /* removed height/min-height/max-height so card grows with content */
+    }
+
+    .contract-list li:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.55);
+      border-color: rgba(255,255,255,0.06);
+    }
+
+    /* Rank label (small header) */
+    .contract-rank-label {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      opacity: 0.95;
+    }
+
+    /* Mission name — allow wrapping, larger and bold like reference */
+    .contract-mission-name {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0;
+      line-height: 1.15;
+      white-space: normal; /* allow wrap */
+      overflow: visible;
+      text-overflow: unset;
+    }
+
+    /* meta row: required rank + refresh duration */
+    .contract-meta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .contract-meta .meta-required { color: var(--text-secondary); }
+    .contract-meta .meta-refresh { margin-left: auto; color: var(--text-secondary); font-weight: 500; }
+
+    /* Description area: allow full wrap, no clamping */
+    .contract-desc {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.5;
+      display: block;
+      -webkit-line-clamp: unset;
+      -webkit-box-orient: unset;
+      overflow: visible;
+      text-overflow: unset;
+    }
+
+    /* Note inside card: visually separated but flows naturally */
+    .contract-note {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      background: transparent;
+      font-style: normal;
+    }
+    .contract-note strong { display:block; margin-bottom:0.25rem; color:var(--text-secondary); font-weight:600; }
+
+    /* Responsive tweaks: cards still responsive but freely expand */
+    @media (max-width: 768px) {
+      .contract-list { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+      .contract-list li { padding: 0.9rem; border-radius: 10px; }
+      .contract-mission-name { font-size: 1rem; }
+      .contract-desc { font-size: 0.92rem; line-height: 1.4; }
+    }
+
     @media (max-width: 1200px) {
-      .changelog-layout {
-        grid-template-columns: 1fr;
-      }
-      #unit-details-panel {
-        position: static;
-        top: auto;
-      }
+      .changelog-layout { grid-template-columns: 1fr; }
+      #unit-details-panel { position: static; top: auto; }
     }
     @media (max-width: 768px) {
-      body {
-        padding: 1rem;
-      }
-      .content-wrapper {
-        padding: 25px;
-      }
-      .hiragana-background .text-layer {
-        font-size: 12rem;
-      }
-      .details-header {
-        flex-direction: column;
-        text-align: center;
-      }
+      body { padding: 2rem 1rem; }
+      .content-wrapper { padding: 25px; }
+      .hiragana-background .text-layer { font-size: 12rem; }
+      .details-header { flex-direction: column; text-align: center; }
+      .timeline-item { grid-template-columns: 35px 1fr; gap: 15px; }
+      .timeline-marker::before, .timeline-marker::after { left: 5px; }
     }
   </style>
 </head>
@@ -616,19 +476,284 @@
         <h1 class="main-header">ASTDX Update Log</h1>
         <p class="sub-text">Made by the ASTDX Questions Team</p>
         
-        <div class="changelog-layout">
-          <div class="main-content-column">
-            <div class="content-box">
-              <h2>New Unit Additions</h2>
-              <div id="new-units-grid" class="unit-grid"></div>
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h2 class="update-title">Update 6</h2>
+              <p class="update-date">August XX 2025</p>
+
+              <div class="changelog-layout">
+                <div class="main-content-column">
+                  <div class="content-box">
+                    <h2>New Unit Additions</h2>
+                    <div id="new-units-grid" class="unit-grid"></div>
+                  </div>
+                  <div class="content-box">
+                    <h2>New Passives</h2>
+                    <div id="new-passives-grid" class="unit-grid"></div>
+                  </div>
+              </div>
+              <div id="unit-details-panel"></div>
             </div>
+            <div class="content-box" style="margin-top:2rem;">
+                    <h2>New Event: The Mafia</h2>
+                    <p class="event-intro">Climb the ranks of the criminal underworld in this new event. Complete contracts to earn Rank EXP, Event Currency, and a chance to recruit powerful new allies.</p>
+                    
+                    <h3>The Ranks</h3>
+                    <p>There are a Total of 10 Ranks to climb, with each Rank unlocking new Contracts and Special Bonuses:</p>
+                    <ul class="rank-list">
+                      <li class="boss">Boss</li> <li>Underboss</li> <li>Consigliere</li> <li>Capo</li> <li>Enforcer</li>
+                      <li>Squad Leader</li> <li>Elite Member</li> <li>Member</li> <li>Associate</li> <li>Grunt</li>
+                    </ul>
+
+                    <h3>Contracts</h3>
+                    <p>Polpo will show a dropdown list of Contracts for you to do. Some Contracts are locked behind being a specific Rank.</p>
+                    
+                    <div class="contracts-section">
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Grunt+ Missions</h3>
+    </div>
+
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Associate+ Missions</h3>
+    </div>
+
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Member+ & Elite Member+ Missions</h3>
+    </div>
+
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Squad Leader+ -->
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Squad Leader+ Mission</h3>
+    </div>
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Enforcer+ -->
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Enforcer+ Mission</h3>
+    </div>
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Capo+ -->
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Capo+ Missions</h3>
+    </div>
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Consigliere+ -->
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Consigliere+ Missions</h3>
+    </div>
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Underboss+ -->
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Underboss+ Missions</h3>
+    </div>
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Boss+ -->
+  <div class="contract-group">
+    <div class="contract-group-header">
+      <h3>Boss+ Mission</h3>
+    </div>
+    <ul class="contract-list">
+      <li>
+        <div class="contract-rank-label">Mission</div>
+        <h4 class="contract-mission-name">Mission Name</h4>
+        <div class="contract-meta">
+          <div class="meta-required">Rank Required+</div>
+          <div class="meta-refresh">Refresh: XX</div>
+        </div>
+        <p class="contract-desc">Insert Mission Description Here</p>
+        <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
+      </li>
+    </ul>
+  </div>
+</div>
+                    
+                    <hr class="event-divider">
+                    <p class="event-summary">Your Mafia Rank can be leveled up by completing contracts, with harder contracts giving more Rank EXP and Event Currency. You can also get Rank EXP from general play or extra missions added to your Daily/Weekly Quests. With each Rank you obtain, the total currency from contracts will increase, and the chances to obtain Diavolo will also increase.</p>
+                  </div>
+
+                </div>
           </div>
-          <div id="unit-details-panel"></div>
         </div>
-        <div class="content-box" style="margin-top: 25px;">
-          <h2>Koishi</h2>
-          <p>More update info can go here...</p>
-        </div>
+
       </div>
     </section>
   </main>
@@ -636,10 +761,14 @@
   <script src="changelog-units.js"></script>
   
   <script>
+    // --- START OF CONFIGURATION ---
+    const newAdditionsFilter = ["Banana", "Banana 2"];
+    const newPassivesFilter = ["Banana 3", "Banana 5", "Banana 6", "Banana 7"];
+    // --- END OF CONFIGURATION ---
+
     const loaderWrapper = document.getElementById('loader-wrapper');
     const loaderProgress = document.getElementById('loader-progress');
     const mainContent = document.querySelector('main');
-
     let progress = 0;
     const interval = setInterval(() => {
       progress += Math.random() * 5;
@@ -648,109 +777,51 @@
     }, 100);
 
     const detailsPanel = document.getElementById('unit-details-panel');
-    const placeholderHTML = `<div class="details-placeholder"><p>Click a new unit to see details.</p></div>`;
+    const placeholderHTML = `<div class="details-placeholder"><p>Click a unit to see details.</p></div>`;
 
     function generatePassiveHTML(passiveData) {
+        if (typeof passiveData === 'string') { return `<p>${passiveData}</p>`; }
         const columnCount = passiveData.columnCount || 1;
         const columnsHTML = passiveData.columns.map(col => {
             const contentHTML = col.content.map(line => `<p>${line}</p>`).join('');
-            
-            return `
-                <div class="passive-column">
-                    <h3>${col.heading}</h3>
-                    <div class="passive-column-content">
-                        ${contentHTML}
-                    </div>
-                </div>
-            `;
+            return `<div class="passive-column"> ${col.heading ? `<h3>${col.heading}</h3>` : ''} <div class="passive-column-content">${contentHTML}</div></div>`;
         }).join('');
-
-        return `
-            <strong>${passiveData.title || 'Passive Ability:'}</strong>
-            <div class="passive-columns" style="--grid-columns: ${columnCount};">
-                ${columnsHTML}
-            </div>
-        `;
+        return `<strong>${passiveData.title || 'Passive Ability:'}</strong><div class="passive-columns" style="--grid-columns: ${columnCount};">${columnsHTML}</div>`;
     }
 
     function updateDetailsPanel(unitData) {
-      if (!unitData) {
-        detailsPanel.innerHTML = placeholderHTML;
-        return;
-      }
-      
-      const subheaderHTML = `<p class="details-subheader">
-          <span class="rarity-${unitData.rarity.toLowerCase().replace(' ', '-')}">${unitData.rarity}</span> • <span class="subheader-placement">${unitData.placement}</span>
-        </p>`;
-
+      if (!unitData) { detailsPanel.innerHTML = placeholderHTML; return; }
+      const subheaderHTML = `<p class="details-subheader"><span class="rarity-${unitData.rarity.toLowerCase().replace(' ', '-')}">${unitData.rarity}</span> • <span class="subheader-placement">${unitData.placement}</span></p>`;
       const elementClass = `element-${unitData.element.toLowerCase()}`;
       const passiveHTML = generatePassiveHTML(unitData.passive);
-
-      detailsPanel.innerHTML = `
-        <div class="details-content-wrapper">
-          <div class="details-header">
-            <img id="details-unit-image" src="${unitData.image}" alt="${unitData.name}">
-            <div class="details-title-group">
-                <h2 id="details-unit-name">${unitData.name}</h2>
-                ${subheaderHTML}
-            </div>
-          </div>
-          
-          <div class="details-tags-container">
-            <div class="details-tag tag-element ${elementClass}">
-                <span>${unitData.element}</span>
-            </div>
-            <div class="details-tag tag-method">
-                <span>${unitData.method}</span>
-            </div>
-          </div>
-
-          <div id="details-unit-passive">
-            ${passiveHTML}
-          </div>
-        </div>
-      `;
+      detailsPanel.innerHTML = `<div class="details-content-wrapper"><div class="details-header"><img id="details-unit-image" src="${unitData.image}" alt="${unitData.name}"><div class="details-title-group"><h2 id="details-unit-name">${unitData.name}</h2>${subheaderHTML}</div></div><div class="details-tags-container"><div class="details-tag tag-element ${elementClass}"><span>${unitData.element}</span></div><div class="details-tag tag-method"><span>${unitData.method}</span></div></div><div id="details-unit-passive">${passiveHTML}</div></div>`;
       anime({ targets: '.details-content-wrapper', opacity: [0, 1], translateY: [10, 0], duration: 500, easing: 'easeOutExpo' });
     }
 
     const startApp = () => {
-      const newUnitsGrid = document.getElementById('new-units-grid');
-
-      const populateNewUnits = () => {
-        if (!newUnitsGrid) return; 
-        
-        if (typeof newUnitsData !== 'undefined' && newUnitsData.length > 0) {
-          newUnitsGrid.innerHTML = newUnitsData.map(unit => `
-            <div class="unit-card" data-unit-name="${unit.name}">
-              <img src="${unit.image}" alt="${unit.name}">
-              <p>${unit.name}</p>
-            </div>
-          `).join('');
-        } else {
-          newUnitsGrid.innerHTML = "<p>No new units in this update.</p>";
-        }
+      const mainContentColumn = document.querySelector('.main-content-column');
+      const populateGrid = (gridId, filterList) => {
+        const gridContainer = document.getElementById(gridId);
+        if (!gridContainer) return;
+        const filteredUnits = newUnitsData.filter(unit => filterList.includes(unit.name));
+        if (filteredUnits.length > 0) {
+          gridContainer.innerHTML = filteredUnits.map(unit => `<div class="unit-card" data-unit-name="${unit.name}"><img src="${unit.image}" alt="${unit.name}"><p>${unit.name}</p></div>`).join('');
+        } else { gridContainer.innerHTML = "<p>No units for this category in this update.</p>"; }
       };
       
-      populateNewUnits();
+      populateGrid('new-units-grid', newAdditionsFilter);
+      populateGrid('new-passives-grid', newPassivesFilter);
       updateDetailsPanel(null);
 
-      function setupUnitInteractions() {
-          newUnitsGrid.addEventListener('click', (event) => {
-              const card = event.target.closest('.unit-card');
-              if (!card) return;
-
-              const currentlySelected = newUnitsGrid.querySelector('.unit-card.selected');
-              if (currentlySelected) {
-                currentlySelected.classList.remove('selected');
-              }
-              card.classList.add('selected');
-
-              const unitName = card.dataset.unitName;
-              const unitData = newUnitsData.find(u => u.name === unitName);
-              updateDetailsPanel(unitData);
-          });
-      }
-      setupUnitInteractions();
+      mainContentColumn.addEventListener('click', (event) => {
+          const card = event.target.closest('.unit-card');
+          if (!card) return;
+          document.querySelectorAll('.unit-card.selected').forEach(selected => { selected.classList.remove('selected'); });
+          card.classList.add('selected');
+          const unitName = card.dataset.unitName;
+          const unitData = newUnitsData.find(u => u.name === unitName);
+          updateDetailsPanel(unitData);
+      });
 
       const header = document.querySelector('.main-header');
       header.innerHTML = header.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -759,7 +830,8 @@
       tl.add({ targets: '.main-header', opacity: [0, 1], duration: 200 })
         .add({ targets: '.main-header .letter', translateY: [20, 0], opacity: [0, 1], duration: 1200, delay: anime.stagger(50) }, '-=100')
         .add({ targets: '.sub-text', translateY: [15, 0], opacity: [0, 1], duration: 800 }, '-=1000')
-        .add({ targets: ['.content-box', '#unit-details-panel'], translateY: [20, 0], opacity: [0, 1], delay: anime.stagger(100) }, '-=700')
+        .add({ targets: ['.update-title', '.update-date'], translateY: [15, 0], opacity: [0, 1], delay: anime.stagger(100) }, '-=800')
+        .add({ targets: ['.content-box', '#unit-details-panel'], translateY: [20, 0], opacity: [0, 1], delay: anime.stagger(100) }, '-=600')
         .add({ targets: '.unit-card', translateY: [15, 0], opacity: [0, 1], delay: anime.stagger(80) }, '-=800');
     };
 
@@ -780,3 +852,4 @@
   <script src="assets/musicplayer.js"></script>
   <script src="assets/logo/logo_animation.js"></script>
 </body>
+</html>
