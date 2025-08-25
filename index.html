@@ -38,6 +38,56 @@
       padding: 2rem;
     }
 
+    /* --- NEW: Loading Screen Styles --- */
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-in-out;
+    }
+    #loader-bar-container {
+      width: 80%;
+      max-width: 400px;
+      height: 10px;
+      background-color: var(--border-color);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #loader-progress {
+      width: 0%;
+      height: 100%;
+      background-color: var(--accent-green);
+      border-radius: 5px;
+      transition: width 0.2s linear;
+    }
+    #loader-text {
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: var(--text-secondary);
+    }
+    /* --- END: Loading Screen Styles --- */
+
+    main { 
+      width: 100%; max-width: 1200px;
+      /* Hide main content initially */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease;
+    }
+    /* This class will be added by JS to show the content */
+    main.loaded {
+        opacity: 1;
+        visibility: visible;
+    }
+
     .background-design {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 100%; z-index: -1;
@@ -49,8 +99,6 @@
         linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light-dark) 100%);
       background-size: 50px 50px, 50px 50px, 100% 100%, 100% 100%;
     }
-
-    main { width: 100%; max-width: 1200px; }
     
     .content-card {
       background-color: var(--card-bg);
@@ -157,7 +205,6 @@
       font-weight: 300; margin: 0.5rem 0;
     }
     
-    /* --- NEW STYLES for Unit Grid --- */
     .unit-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -171,7 +218,7 @@
       border-radius: 10px; background-color: var(--bg-dark);
       transition: all 0.2s ease-in-out; text-align: center;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      opacity: 0; /* Hide for animation */
+      opacity: 0;
     }
     .unit-card:hover {
       border-color: var(--accent-green);
@@ -185,7 +232,6 @@
       font-size: 0.85rem; font-weight: 500;
       color: var(--text-primary); text-transform: capitalize;
     }
-    /* --- END of Unit Grid Styles --- */
 
     @media (max-width: 768px) {
       body { padding: 1rem; }
@@ -204,10 +250,16 @@
   </style>
 </head>
 <body>
+
+  <!-- NEW: Loader HTML -->
+  <div id="loader-wrapper">
+    <div id="loader-bar-container">
+      <div id="loader-progress"></div>
+    </div>
+    <p id="loader-text">Loading Assets...</p>
+  </div>
   
   <div class="background-design"></div>
-
-  
 
   <main>
     <section class="logo">
@@ -238,11 +290,12 @@
             <div id="new-units-grid" class="unit-grid"></div>
           </div>
           
-          <!-- Other changelog sections -->
           <div class="content-box">
+            <!-- Other content -->
           </div>
 
           <div class="content-box">
+            <!-- Other content -->
           </div>
         </div>
       </div>
@@ -254,29 +307,39 @@
   <script src="changelog-units.js"></script>
   
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    // --- NEW LOADING SCRIPT ---
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    const loaderProgress = document.getElementById('loader-progress');
+    const mainContent = document.querySelector('main');
+
+    // Simulate loading progress for better UX
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 5;
+      if (progress > 99) {
+        progress = 99; // Don't hit 100% until everything is actually loaded
+      }
+      loaderProgress.style.width = progress + '%';
+    }, 100);
+
+    const startApp = () => {
       const populateNewUnits = () => {
         const gridContainer = document.getElementById('new-units-grid');
         if (!gridContainer) return; 
         
-        
         if (typeof newUnitsData !== 'undefined' && newUnitsData.length > 0) {
-          const cardsHTML = newUnitsData.map(unit => `
+          gridContainer.innerHTML = newUnitsData.map(unit => `
             <div class="unit-card">
               <img src="${unit.image}" alt="${unit.name}">
               <p>${unit.name}</p>
             </div>
           `).join('');
-          
-          gridContainer.innerHTML = cardsHTML;
         } else {
           gridContainer.innerHTML = "<p>No new units in this update.</p>";
         }
       };
       
-      populateNewUnits(); 
-
-      // --- ANIME.JS ANIMATION SEQUENCE ---
+      populateNewUnits();
       const header = document.querySelector('.main-header');
       header.innerHTML = header.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
       
@@ -303,20 +366,31 @@
         targets: '.content-box',
         translateY: [20, 0], opacity: [0, 1],
       }, '-=700')
-      // Add a new animation step for the unit cards inside the grid
       .add({
         targets: '.unit-card',
         translateY: [15, 0],
         opacity: [0, 1],
-        delay: anime.stagger(80) // Stagger the appearance of each card
-      }, '-=800'); // Overlap this animation with the content box animation
+        delay: anime.stagger(80)
+      }, '-=800');
+    };
+
+    window.addEventListener('load', () => {
+      clearInterval(interval);
+      loaderProgress.style.width = '100%';
+      setTimeout(() => {
+        loaderWrapper.style.opacity = '0';
+
+        loaderWrapper.addEventListener('transitionend', () => {
+          loaderWrapper.style.display = 'none';
+          mainContent.classList.add('loaded');
+          startApp();
+        }, { once: true }); 
+
+      }, 500); 
     });
   </script>
 
-  <!---- Logo Animation Script ---->
   <script src="assets/musicplayer.js"></script>
-
-  <!-- Logo Animation JS -->
   <script src="assets/logo/logo_animation.js"></script>
 </body>
 </html>
