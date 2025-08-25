@@ -192,13 +192,27 @@
       .content-wrapper { padding: 25px; }
       .hiragana-background .text-layer { font-size: 12rem; }
     }
+
+    .logo img {
+      width: 500px;
+      height: auto;
+    }
+
+    .logo {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   
   <div class="background-design"></div>
 
+  
+
   <main>
+    <section class="logo">
+      <img id="logo_frame" src="assets/logo/images/ASTD_00000.png" alt="logo animation">
+    </section>
     <section class="content-card">
       <div class="hiragana-background" translate="no">
         <div class="text-container">
@@ -235,8 +249,6 @@
     </section>
   </main>
   
-  <!-- Make sure you have this file -->
-  <script src="assets/musicplayer.js"></script>
 
   <!-- IMPORTANT: Load the new unit data file BEFORE the main script -->
   <script src="changelog-units.js"></script>
@@ -300,5 +312,11 @@
       }, '-=800'); // Overlap this animation with the content box animation
     });
   </script>
+
+  <!---- Logo Animation Script ---->
+  <script src="assets/musicplayer.js"></script>
+
+  <!-- Logo Animation JS -->
+  <script src="assets/logo/logo_animation.js"></script>
 </body>
 </html>
