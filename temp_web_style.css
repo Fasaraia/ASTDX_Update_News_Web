@@ -19,20 +19,20 @@
     }
 
     .boss {
-  font-family: 'Fredoka', serif;
-  font-weight: 700;
-  line-height: 1.2; 
-  display: center;
-  align-items: center;
-  /* --- END FIX --- */
-  
-  /* All of our animations, including the new font flicker */
-  animation: 
-    glitch-top 1s linear infinite alternate-reverse, 
-    glitch-bottom 1.5s linear infinite alternate-reverse,
-    glitch-color 0.8s linear infinite,
-    glitch-font 2.1s steps(1, end) infinite;
-}
+      font-family: 'Fredoka', serif;
+      font-weight: 700;
+      line-height: 1.2; 
+      display: center;
+      align-items: center;
+      /* --- END FIX --- */
+      
+      /* All of our animations, including the new font flicker */
+      animation: 
+        glitch-top 1s linear infinite alternate-reverse, 
+        glitch-bottom 1.5s linear infinite alternate-reverse,
+        glitch-color 0.8s linear infinite,
+        glitch-font 2.1s steps(1, end) infinite;
+    }
 
 
     .contract-group { margin-bottom: 2rem; }
@@ -133,3 +133,174 @@
       font-style: normal;
     }
     .contract-note strong { display:block; margin-bottom:0.25rem; color:var(--text-secondary); font-weight:600; }
+
+/* --- NEW: Banner Layout Styles --- */
+.event-banner-layout {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    align-items: stretch;
+}
+
+.event-banner-wrapper {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-banner-wrapper h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-banner-area {
+    flex-grow: 1;
+    margin-top: 0;
+}
+
+.banner-rates-wrapper {
+    flex: 1; /* Rates take less space */
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-rates-wrapper h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- UPDATED: Banner Rates Styles --- */
+.banner-rates-container {
+    background-color: #111;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255, 255, 255, 0.02) 35px, rgba(255, 255, 255, 0.02) 70px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+/* Custom Scrollbar for Banner Rates */
+.banner-rates-container::-webkit-scrollbar {
+    width: 12px;
+}
+.banner-rates-container::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 10px;
+}
+.banner-rates-container::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+    border: 3px solid #222;
+}
+.banner-rates-container::-webkit-scrollbar-thumb:hover {
+    background-color: #777;
+}
+
+.rate-tier {
+    margin-bottom: 1rem;
+}
+.rate-tier:last-child {
+    margin-bottom: 0;
+}
+
+.rate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: 2px solid;
+    border-image-slice: 1;
+}
+
+.rate-tier.tier-unbound .rate-header {
+    border-image-source: linear-gradient(to right, #f00, #8e44ad, #f00);
+}
+.rate-tier.tier-5star .rate-header {
+    border-image-source: linear-gradient(to right, rgb(255, 0, 0), #ff0, rgb(0, 255, 98), #0ff);
+}
+.rate-tier.tier-4star .rate-header {
+    border-image-source: linear-gradient(to right, #f00, #f44, #f00);
+}
+
+.rate-units-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem 0.5rem;
+}
+
+.banner-unit-card {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    border-radius: 8px;
+    padding: 2px;
+    background: #333; /* Fallback */
+}
+
+.banner-unit-card .banner-unit-name {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 2px 4px;
+    border-radius: 4px;
+    z-index: 1;
+    max-width: calc(100% - 8px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.banner-unit-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.rate-tier.tier-unbound .banner-unit-card {
+    background: linear-gradient(to bottom right, #f00, #8e44ad, #f00);
+}
+.rate-tier.tier-5star .banner-unit-card {
+    background: linear-gradient(to bottom right, rgb(255, 0, 0), #ff0, rgb(0, 255, 98), #0ff);
+}
+.rate-tier.tier-4star .banner-unit-card {
+    background: #f00;
+}
+
+.unit-chance-overlay {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+@media (max-width: 992px) {
+    .event-banner-layout {
+        flex-direction: column;
+    }
+}
