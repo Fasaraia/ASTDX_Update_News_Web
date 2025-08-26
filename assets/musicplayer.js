@@ -3,6 +3,8 @@ const slider = document.getElementById("volume-slider-vertical");
 const fill = document.getElementById("volume-fill");
 const volumeBtn = document.getElementById("start-mute-unmute");
 const MAX_VOLUME = 0.5;
+const audioWrapper = document.querySelector('.audio-wrapper');
+let isDragging = false;
 audio.volume = 0.25;
 audio.muted = true;
 fill.style.height = `0%`; 
@@ -50,34 +52,37 @@ slider.addEventListener("mousedown", (e) => {
   window.addEventListener("mouseup", upHandler);
 });
 
-// Touch drag
+// Touch Support
 slider.addEventListener("touchstart", (e) => {
+  isDragging = true;
+  if (audio.muted) {
+    audio.muted = false;
+    audio.volume = defaultVolume * MAX_VOLUME;
+    anime({
+      targets: fill,
+      height: `${defaultVolume * 100}%`,
+      duration: 150,
+      easing: "easeOutQuad"
+    });
+    volumeBtn.innerHTML = volumeOnSVG;
+  }
+  audio.play().catch(err => console.warn(err));
   setVolumeFromY(e.touches[0].clientY);
-  if (audio.paused) audio.play().catch(err => console.warn(err));
 
-  function moveHandler(eMove) { setVolumeFromY(eMove.touches[0].clientY); }
+  function moveHandler(eMove) {
+    eMove.preventDefault(); // prevent scrolling
+    setVolumeFromY(eMove.touches[0].clientY);
+  }
   function endHandler(eEnd) {
     setVolumeFromY(eEnd.changedTouches[0].clientY, true);
+    isDragging = false;
     window.removeEventListener("touchmove", moveHandler);
     window.removeEventListener("touchend", endHandler);
   }
-  window.addEventListener("touchmove", moveHandler);
+  window.addEventListener("touchmove", moveHandler, { passive: false });
   window.addEventListener("touchend", endHandler);
 });
 
-// Touch support
-slider.addEventListener("touchstart", (e) => {
-  setVolumeFromY(e.touches[0].clientY);
-  if (audio.paused) audio.play().catch(err => console.warn(err));
-
-  function moveHandler(eMove) { setVolumeFromY(eMove.touches[0].clientY); }
-  function endHandler() {
-    window.removeEventListener("touchmove", moveHandler);
-    window.removeEventListener("touchend", endHandler);
-  }
-  window.addEventListener("touchmove", moveHandler);
-  window.addEventListener("touchend", endHandler);
-});
 
 slider.addEventListener("input", (e) => {
   if (audio.paused) audio.play().catch(err => console.warn(err));
@@ -121,3 +126,16 @@ volumeBtn.addEventListener("click", () => {
   volumeBtn.innerHTML = audio.muted ? volumeOffSVG : volumeOnSVG;
 });
 
+audioWrapper.addEventListener('touchstart', (e) => {
+  isDragging = true;
+});
+
+audioWrapper.addEventListener('touchmove', (e) => {
+  if (isDragging) {
+    e.preventDefault(); // prevent page from scrolling
+  }
+}, { passive: false });
+
+audioWrapper.addEventListener('touchend', () => {
+  isDragging = false;
+});

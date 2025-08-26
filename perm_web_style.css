@@ -106,7 +106,23 @@
 			background: rgba(30,30,30,0.7);
 			border-radius: 8px;border: 1px solid var(--border-color);
     }
+		/* Mobile float */
+		@media (max-width: 768px) {
+			.audio-wrapper {
+				position: fixed; 
+				top: 325px; /* avoid being hidden under home indicator */
+				left: 60%;
+				z-index: 1000;
+				width: 10%;
+				background: rgba(0,0,0,0.7);
+				padding: 10px;
+				border-radius: 12px;
+				box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+				touch-action: none; 
+			}
+		}
 
+		
     .music-player {
 			display: flex;
 			justify-content: center;
