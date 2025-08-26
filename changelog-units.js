@@ -11,6 +11,7 @@ const newUnitsData = [
             columns: [{
                 heading: 'Time Erasure',
                 content: [
+                    "<span class='cd-desc'>(560s CD) - Global</span>",
                     "Applies Slow to All Enemies on the map along with making them take +10% more damage while Time Erasure is active. Once Time Erasure ends, All Enemies are Warped 2 Paths Back."
                 ]
             }]
@@ -49,11 +50,11 @@ const newUnitsData = [
             columns: [{
                 heading: 'Infinite Steel Works',
                 content: [
+                    "<span class='cd-desc'>(330s CD) - Local</span>",
                     "Swaps Red Servant into a New Attack Mode for 30 Seconds. While Infinite Steelworks is active, Red Servant cannot be Stunned or Debuffed."
                 ]
             }]
-        },
-        passive: {}
+        }
     },
     {
         name: "Jotaro",
@@ -67,11 +68,11 @@ const newUnitsData = [
             columns: [{
                 heading: 'Star Stop',
                 content: [
+                    "<span class='cd-desc'>(40s CD) - Local</span>",
                     "Stops all enemies movement in range for 4.5 seconds. Enemies are immune to stun for the next 5.5 seconds afterwards"
                 ]
             }]
-        },
-        passive: {}
+        }
     },
     {
         name: "Simon",
@@ -85,11 +86,11 @@ const newUnitsData = [
             columns: [{
                 heading: 'Spiral Mech',
                 content: [
+                    "<span class='cd-desc'>(15s CD)</span>",
                     "Summons Gurran as a Controlable Mech"
                 ]
             }]
-        },
-        passive: {}
+        }
     },
     {
         name: "Sun Raku",
@@ -103,14 +104,14 @@ const newUnitsData = [
             columns: [{
                 heading: 'Spiral Mech',
                 content: [
+                    "<span class='cd-desc'>(5s CD) - Local</span>",
                     "Levels up Fighter Eagle with New Moves and Perks when reaching certain Damage Thresholds!",
                     "Level 1: 20% Dodge Chance, +10% Crit Chance (275,000 - 674,999 DMG)",
                     "Level 2: 35% Dodge Chance, Poison Status Effect (675,000 -1,249,999 DMG)",
                     "Level 3: 50% Dodge Chance, +20% Crit Chance (1,250,000+)",
                 ]
             }]
-        },
-        passive: {}
+        }
     },
     {
         name: "Michishibo",

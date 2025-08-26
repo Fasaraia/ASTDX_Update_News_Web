@@ -280,6 +280,7 @@
     .highlight-text-purplegradient { background-image: linear-gradient(45deg, #c0392b, #8e44ad); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500; }
     .highlight-text-orangegradient { background-image: linear-gradient(45deg, #c9461e, #e4964e); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500; }
     .highlight-text-bluegradient { background-image: linear-gradient(45deg, #1d86e8, #1ddde8); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500; }
+    .cd-desc { font-size: 0.95rem !important; color: var(--text-secondary) !important; line-height: 1.6 !important; margin: 0; }
 
     .highlight-decelerate { background-color: #f0ad4e; color: #1e1e1e; font-weight: 600; padding: 2px 5px; border-radius: 4px; }
     .highlight-explosive { background-color: #d9534f; color: #e0e0e0; font-weight: 600; padding: 2px 5px; border-radius: 4px; }
