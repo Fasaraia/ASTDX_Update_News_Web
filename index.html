@@ -73,248 +73,248 @@
                       </ul>
 
                       <h3>Contracts</h3>
-                      <p>Polpo will show a dropdown list of Contracts for you to do. Some Contracts are locked behind being a specific Rank.</p>
-                      
-                      <div class="contracts-section">
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Grunt+ Missions</h3>
-      </div>
+                      <p>Polpo will show a dropdown list of Contracts for you to do. For each rank there will be 3 Contracts available. Some Contracts are locked behind being a specific Rank.</p>
 
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
+                      <!-- carousel: will be populated from the original .contracts-section (kept as data source) -->
+                      <div class="contracts-carousel-wrapper">
+                        <button class="carousel-nav carousel-prev" aria-label="Previous">‹</button>
+                        <div class="carousel-viewport">
+                          <div class="carousel-track">
+                            <!-- slides inserted here by JS (one slide = a .contract-group panel) -->
+                          </div>
+                        </div>
+                        <button class="carousel-nav carousel-next" aria-label="Next">›</button>
+                      </div>
+                      <!-- keep the original contracts-section as hidden data source (unchanged markup moved below) -->
+                      <div class="contracts-section" style="display:none;">
+                        <!-- Grunt+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Grunt+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Grunt and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 5 Minutes</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">1-3x Mafia Coin, 550x Devil Shard, 25x Gems, (40%) 1x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
+                        <!-- Associate+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Associate+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Associate and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 15 Minutes</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">3-5x Mafia Coin, 50x Gems, (45%) 1-2x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Associate+ Missions</h3>
-      </div>
+                        <!-- Member+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Member+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Member and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 30 Minutes</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">5-7x Mafia Coin, 1000x Devil Shard, 75x Gems, (50%) 1-2x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
+                        <!-- Elite Member+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Elite Member+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Elite Member and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 30 Minutes</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">7-10x Mafia Coin, 1250x Devil Shard, 125x Gems, (75%) 1-2x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
+                        <!-- Squad Leader+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Squad Leader+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Squad Leader and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 30 Minutes</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">11-14x Mafia Coin, 1800x Devil Shard, 175x Gems, 1-2x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Member+ & Elite Member+ Missions</h3>
-      </div>
+                        <!-- Enforcer+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Enforcer+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Enforcer and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 45 Minutes</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">15-18x Mafia Coin, 2000x Devil Shard, 225x Gems, 1-2x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
+                        <!-- Capo+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Capo+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Capo and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 60 Minutes</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">20-23x Mafia Coin, 2500x Devil Shard, 275x Gems, 2x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
+                        <!-- Consigliere+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Consigliere+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Consigliere and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 60 Minutes</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">23-26x Mafia Coin, 3000x Devil Shard, 325x Gems, 2x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-    <!-- Squad Leader+ -->
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Squad Leader+ Mission</h3>
-      </div>
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
+                        <!-- Underboss+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Underboss+ Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Underboss and above ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 8 Hours</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">27-30x Mafia Coin, 4000x Devil Shard, 400x Gems, 3x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
 
-    <!-- Enforcer+ -->
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Enforcer+ Mission</h3>
-      </div>
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
+                        <!-- Boss+ -->
+                        <div class="contract-group">
+                          <ul class="contract-list">
+                            <li>
+                              <div class="contract-rank-label">Mission</div>
+                              <h4 class="contract-mission-name">Boss Mission</h4>
+                              <div class="contract-meta">
+                                <div class="meta-required">Boss ranks can participate</div>
+                                <div class="meta-refresh">Refresh: 12 Hours</div>
+                              </div>
+                              <p class="contract-desc">Insert Mission Description Here</p>
+                              <div class="contract-note">30-35x Mafia Coin, 6750x Devil Shard, 500x Gems, 4x Trait Reroll</div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
 
-    <!-- Capo+ -->
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Capo+ Missions</h3>
-      </div>
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Consigliere+ -->
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Consigliere+ Missions</h3>
-      </div>
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Underboss+ -->
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Underboss+ Missions</h3>
-      </div>
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Boss+ -->
-    <div class="contract-group">
-      <div class="contract-group-header">
-        <h3>Boss+ Mission</h3>
-      </div>
-      <ul class="contract-list">
-        <li>
-          <div class="contract-rank-label">Mission</div>
-          <h4 class="contract-mission-name">Mission Name</h4>
-          <div class="contract-meta">
-            <div class="meta-required">Rank Required+</div>
-            <div class="meta-refresh">Refresh: XX</div>
-          </div>
-          <p class="contract-desc">Insert Mission Description Here</p>
-          <div class="contract-note">explain what to do to finish quest here filler text filler text filler text filler text filler text filler text filler text filler text </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-                      
                       <hr class="event-divider">
-                      <p class="event-summary">Your Mafia Rank can be leveled up by completing contracts, with harder contracts giving more Rank EXP and Event Currency. You can also get Rank EXP from general play or extra missions added to your Daily/Weekly Quests. With each Rank you obtain, the total currency from contracts will increase, and the chances to obtain Diavolo will also increase.</p>
-                    </div>
+                      <p class="event-summary">Your Mafia Rank can be leveled up by completing contracts, with harder contracts giving more Rank EXP and Event Currency. You can also get Rank EXP from general play or extra missions added to your Daily/Weekly Quests. With each Rank you obtain, a new set of quests and rewards will be unlocked.</p>
+                    
+                      <h2>New Event Banner</h2>
+                      <p class="event-intro">A new unique banner that uses event currency to obtain event exclusive units and rewards.</p>
 
+                      <div class="event-banner-layout">
+                        <div class="event-banner-wrapper">
+                          <h3>Event Banner</h3>
+                          <div class="event-banner-area">
+                            <img src="https://placehold.co/800x250/1e1e1e/a0a0a0?text=Event+Banner+Placeholder" alt="Event Banner Placeholder">
+                          </div>
+                        </div>
+                        <div class="banner-rates-wrapper">
+                          <h3>Banner Rates</h3>
+                          <div class="banner-rates-container">
+                            <!-- Unbound Tier -->
+                            <div class="rate-tier tier-unbound">
+                              <div class="rate-header">
+                                <span>Unbound</span>
+                                <span>(0.0000001%)</span>
+                              </div>
+                              <div class="rate-units-grid">
+                                <div class="banner-unit-card">
+                                  <span class="banner-unit-name">Non Thinker</span>
+                                  <img src="assets/units/placeholder.png" alt="Unit">
+                                  <div class="unit-chance-overlay">100%</div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 5 Star Tier -->
+                            <div class="rate-tier tier-5star">
+                              <div class="rate-header">
+                                <span>5 Star</span>
+                                <span>(1%)</span>
+                              </div>
+                              <div class="rate-units-grid">
+                                <div class="banner-unit-card">
+                                  <span class="banner-unit-name">Unit Name</span>
+                                  <img src="assets/units/placeholder.png" alt="Unit">
+                                  <div class="unit-chance-overlay">100%</div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 4 Star Tier -->
+                            <div class="rate-tier tier-skins">
+                              <div class="rate-header">
+                                <span>Event Skins</span>
+                                <span>(99%)</span>
+                              </div>
+                              <div class="rate-units-grid">
+                                <div class="banner-unit-card">
+                                  <span class="banner-unit-name">Unit Name</span>
+                                  <img src="assets/units/placeholder.png" alt="Unit">
+                                  <div class="unit-chance-overlay">50%</div>
+                                </div>
+                                <div class="banner-unit-card">
+                                  <span class="banner-unit-name">Unit Name</span>
+                                  <img src="assets/units/placeholder.png" alt="Unit">
+                                  <div class="unit-chance-overlay">50%</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
             </div>
           </div>
@@ -341,7 +341,7 @@
   
   <script>
     // --- START OF CONFIGURATION ---
-    const newAdditionsFilter = ["Banana", "Banana 2"];
+    const newAdditionsFilter = ["Diavolo", "Simon", "Sun Raku", "Jotaro", "Giorno", "Archer"];
     const newPassivesFilter = ["Michishibo", "Spider Boss", "Supreme Leader", "Magma Marine", "Etri"];
     // --- END OF CONFIGURATION ---
 
@@ -358,32 +358,65 @@
     const detailsPanel = document.getElementById('unit-details-panel');
     const placeholderHTML = `<div class="details-placeholder"><p>Click a unit to see details.</p></div>`;
 
-    function generatePassiveHTML(passiveData) {
-        if (typeof passiveData === 'string') { return `<p>${passiveData}</p>`; }
-        
-        // This new version maps each column to its own HTML block...
-        const passiveBlocksHTML = passiveData.columns.map(col => {
+     function generateAbilityHTML(abilityData, defaultTitle) {
+        if (!abilityData) { return ''; } 
+        if (typeof abilityData === 'string') {
+            return `<div class="ability-section"><strong>${defaultTitle}</strong><p>${abilityData}</p></div>`;
+        }
+        const abilityBlocksHTML = abilityData.columns.map(col => {
             const contentHTML = col.content.map(line => `<p>${line}</p>`).join('');
-            // We avoid using '.passive-column' to prevent the unwanted left border in a stacked layout.
             return `
                 <div> 
                     ${col.heading ? `<h3>${col.heading}</h3>` : ''} 
                     <div class="passive-column-content">${contentHTML}</div>
                 </div>
             `;
-        // ...and then joins them with a styled horizontal rule (<hr>) to act as a divider.
         }).join('<hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.25rem 0;">'); 
-
-        return `<strong>${passiveData.title || 'Passive Ability:'}</strong><div>${passiveBlocksHTML}</div>`;
+        const title = abilityData.title || defaultTitle || 'Ability:';
+        return `<div class="ability-section">${`<strong>${title}</strong><div>${abilityBlocksHTML}</div>`}</div>`;
     }
 
     function updateDetailsPanel(unitData) {
       if (!unitData) { detailsPanel.innerHTML = placeholderHTML; return; }
       const subheaderHTML = `<p class="details-subheader"><span class="rarity-${unitData.rarity.toLowerCase().replace(' ', '-')}">${unitData.rarity}</span> • <span class="subheader-placement">${unitData.placement}</span></p>`;
       const elementClass = `element-${unitData.element.toLowerCase()}`;
-      const passiveHTML = generatePassiveHTML(unitData.passive);
-      detailsPanel.innerHTML = `<div class="details-content-wrapper"><div class="details-header"><img id="details-unit-image" src="${unitData.image}" alt="${unitData.name}"><div class="details-title-group"><h2 id="details-unit-name">${unitData.name}</h2>${subheaderHTML}</div></div><div class="details-tags-container"><div class="details-tag tag-element ${elementClass}"><span>${unitData.element}</span></div><div class="details-tag tag-method"><span>${unitData.method}</span></div></div><div id="details-unit-passive">${passiveHTML}</div></div>`;
+      const manualAbilityHTML = generateAbilityHTML(unitData.manualAbility, 'Manual Ability:');
+      const passiveHTML = generateAbilityHTML(unitData.passive, 'Passive Ability:');
+      const divider = manualAbilityHTML && passiveHTML 
+        ? '<hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">' 
+        : '';
+      const allAbilitiesHTML = manualAbilityHTML + divider + passiveHTML;
+
+      detailsPanel.innerHTML = `
+        <div class="details-content-wrapper">
+            <div class="details-header">
+                <img id="details-unit-image" src="${unitData.image}" alt="${unitData.name}">
+                <div class="details-title-group">
+                    <h2 id="details-unit-name">${unitData.name}</h2>
+                    ${subheaderHTML}
+                </div>
+            </div>
+            <div class="details-tags-container">
+                <div class="details-tag tag-element ${elementClass}"><span>${unitData.element}</span></div>
+                <div class="details-tag tag-method"><span>${unitData.method}</span></div>
+            </div>
+            <div id="details-unit-passive">${allAbilitiesHTML}</div>
+        </div>`;
+      
       anime({ targets: '.details-content-wrapper', opacity: [0, 1], translateY: [10, 0], duration: 500, easing: 'easeOutExpo' });
+    }
+
+    // --- move syncPanelHeight to top-level so startApp can call it reliably ---
+    function syncPanelHeight() {
+      const mainContentColumn = document.querySelector('.main-content-column');
+      const detailsPanel = document.getElementById('unit-details-panel');
+      if (mainContentColumn && detailsPanel) {
+        if (window.innerWidth > 1200) {
+          detailsPanel.style.maxHeight = `${mainContentColumn.offsetHeight}px`;
+        } else {
+          detailsPanel.style.maxHeight = '';
+        }
+      }
     }
 
     const startApp = () => {
@@ -401,20 +434,10 @@
       populateGrid('new-passives-grid', newPassivesFilter);
       updateDetailsPanel(null);
 
-      function syncPanelHeight() {
-        const mainContentColumn = document.querySelector('.main-content-column');
-        const detailsPanel = document.getElementById('unit-details-panel');
-        if (mainContentColumn && detailsPanel) {
-          // Only apply this on wider screens where the layout is side-by-side
-          if (window.innerWidth > 1200) {
-            detailsPanel.style.maxHeight = `${mainContentColumn.offsetHeight}px`;
-          } else {
-            // On smaller screens, remove the max-height to allow natural flow
-            detailsPanel.style.maxHeight = '';
-          }
-        }
-      }
-      // Sync on initial load and on resize
+      // initialize contracts carousel after grids populated and DOM is ready
+      if (typeof initContractsCarousel === 'function') initContractsCarousel();
+
+      // Sync on initial load and on resize using top-level function
       syncPanelHeight();
       window.addEventListener('resize', syncPanelHeight);
 
@@ -482,6 +505,82 @@
         }, { once: true }); 
       }, 500); 
     });
+
+    // --- Contracts Carousel Init (improved sizing & resize handling) ---
+    function initContractsCarousel() {
+     const source = document.querySelector('.contracts-section');
+     const wrapper = document.querySelector('.contracts-carousel-wrapper');
+     if (!source || !wrapper) return;
+
+     const track = wrapper.querySelector('.carousel-track');
+     const prevBtn = wrapper.querySelector('.carousel-prev');
+     const nextBtn = wrapper.querySelector('.carousel-next');
+     const viewport = wrapper.querySelector('.carousel-viewport');
+
+     // move all contract-group nodes into slides (clone so source remains editable)
+     const groups = Array.from(source.querySelectorAll('.contract-group'));
+     if (!groups.length) { wrapper.style.display = 'none'; return; }
+     track.innerHTML = ''; // clear if re-init
+     groups.forEach(g => {
+       const slide = document.createElement('div');
+       slide.className = 'carousel-item';
+       slide.appendChild(g.cloneNode(true));
+       track.appendChild(slide);
+     });
+     source.style.display = 'none';
+
+     let index = 0;
+     const slides = Array.from(track.children);
+
+     // size slides in pixels to exactly match viewport width
+     function sizeSlides() {
+       const vw = viewport.clientWidth;
+       slides.forEach(s => {
+         s.style.flex = '0 0 auto';
+         s.style.width = `${vw}px`;
+       });
+       track.style.width = `${slides.length * viewport.clientWidth}px`;
+     }
+
+     function updateControls() {
+       prevBtn.disabled = index === 0;
+       nextBtn.disabled = index >= slides.length - 1;
+       slides.forEach((s, i) => s.classList.toggle('active', i === index));
+     }
+
+     function goTo(i) {
+       index = Math.max(0, Math.min(i, slides.length - 1));
+       const offset = -index * viewport.clientWidth;
+       anime({
+         targets: track,
+         translateX: offset,
+         duration: 450,
+         easing: 'easeOutCubic'
+       });
+       updateControls();
+     }
+
+     prevBtn.addEventListener('click', () => goTo(index - 1));
+     nextBtn.addEventListener('click', () => goTo(index + 1));
+
+     // handle resize: re-measure and keep current slide in view
+     let resizeTimeout;
+     function onResize() {
+       clearTimeout(resizeTimeout);
+       resizeTimeout = setTimeout(() => {
+         sizeSlides();
+         // reposition instantly (no animation) to current index
+         const off = -index * viewport.clientWidth;
+         track.style.transform = `translateX(${off}px)`;
+       }, 80);
+     }
+     window.addEventListener('resize', onResize);
+
+     // initial sizing & show
+     sizeSlides();
+     updateControls();
+     goTo(0);
+   }
   </script>
 
   <script src="assets/musicplayer.js"></script>
