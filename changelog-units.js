@@ -9,12 +9,9 @@ const newUnitsData = [
         manualAbility: {
             title: 'Manual Ability:',
             columns: [{
-                heading: 'Transparent World',
+                heading: 'Time Erasure',
                 content: [
-                    "For 15 seconds, enter a state of heightened perception.",
-                    "While active:",
-                    "◦ All attacks ignore enemy defense.",
-                    "◦ Attack speed is increased by 25%."
+                    "Applies Slow to All Enemies on the map along with making them take +10% more damage while Time Erasure is active. Once Time Erasure ends, All Enemies are Warped 2 Paths Back."
                 ]
             }]
         },
@@ -30,13 +27,90 @@ const newUnitsData = [
                     "◦ Counter with an Extra ATK inflicting Bleed"
                 ]
             },{
-                heading: 'Banana',
+                heading: 'Time Manipulator',
                 content: [
-                    "<span class='highlight-text-green'>+15%</span> DMG in banana maps "
+                    "While Time Erasure is active:",
+                    "◦ -20% SPA",
+                    "◦ Launches Extra ATK"
                 ]
 
             }]
         }
+    },
+    {
+        name: "Archer",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Green",
+        placement: "Ground",
+        method: "Banner",
+        manualAbility: {
+            title: 'Manual Ability:',
+            columns: [{
+                heading: 'Infinite Steel Works',
+                content: [
+                    "Swaps Red Servant into a New Attack Mode for 30 Seconds. While Infinite Steelworks is active, Red Servant cannot be Stunned or Debuffed."
+                ]
+            }]
+        },
+        passive: {}
+    },
+    {
+        name: "Jotaro",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Green",
+        placement: "Ground",
+        method: "Banner",
+        manualAbility: {
+            title: 'Manual Ability:',
+            columns: [{
+                heading: 'Star Stop',
+                content: [
+                    "Stops all enemies movement in range for 4.5 seconds. Enemies are immune to stun for the next 5.5 seconds afterwards"
+                ]
+            }]
+        },
+        passive: {}
+    },
+    {
+        name: "Simon",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Green",
+        placement: "Ground",
+        method: "Banner",
+        manualAbility: {
+            title: 'Manual Ability:',
+            columns: [{
+                heading: 'Spiral Mech',
+                content: [
+                    "Summons Gurran as a Controlable Mech"
+                ]
+            }]
+        },
+        passive: {}
+    },
+    {
+        name: "Sun Raku",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Green",
+        placement: "Ground",
+        method: "Banner",
+        manualAbility: {
+            title: 'Manual Ability:',
+            columns: [{
+                heading: 'Spiral Mech',
+                content: [
+                    "Levels up Fighter Eagle with New Moves and Perks when reaching certain Damage Thresholds!",
+                    "Level 1: 20% Dodge Chance, +10% Crit Chance (275,000 - 674,999 DMG)",
+                    "Level 2: 35% Dodge Chance, Poison Status Effect (675,000 -1,249,999 DMG)",
+                    "Level 3: 50% Dodge Chance, +20% Crit Chance (1,250,000+)",
+                ]
+            }]
+        },
+        passive: {}
     },
     {
         name: "Michishibo",
