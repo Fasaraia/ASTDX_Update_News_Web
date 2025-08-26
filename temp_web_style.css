@@ -1,0 +1,135 @@
+.event-intro, .event-summary { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem !important; }
+    .rank-list {
+        list-style: none; padding: 0; margin: 1.5rem auto;           
+        display: flex;
+        flex-direction: column;          
+        gap: 0.75rem;
+        width: 320px;                    
+        max-width: 100%;
+    }
+    .rank-list li {
+        background: var(--bg-dark);
+        border: 1px solid var(--border-color);
+        padding: 0.65rem 0.9rem;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: 600;
+        width: 100%;                   
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .boss {
+  font-family: 'Fredoka', serif;
+  font-weight: 700;
+  line-height: 1.2; 
+  display: center;
+  align-items: center;
+  /* --- END FIX --- */
+  
+  /* All of our animations, including the new font flicker */
+  animation: 
+    glitch-top 1s linear infinite alternate-reverse, 
+    glitch-bottom 1.5s linear infinite alternate-reverse,
+    glitch-color 0.8s linear infinite,
+    glitch-font 2.1s steps(1, end) infinite;
+}
+
+
+    .contract-group { margin-bottom: 2rem; }
+    .contract-group-header {
+        display: flex; justify-content: space-between; align-items: baseline;
+        padding-bottom: 0.75rem; margin-bottom: 1rem;
+    }
+    .contract-group-header h3 { font-size: 1.25rem; margin: 0; color: var(--text-primary); }
+    .refresh-timer { font-size: 0.9rem; color: var(--text-secondary); font-style: italic; }
+
+    
+    .contract-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .contract-list li {
+      background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 1.1rem 1.15rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      overflow: visible; /* allow content to expand */
+      margin: 0;
+      /* removed height/min-height/max-height so card grows with content */
+    }
+
+    .contract-list li:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.55);
+      border-color: rgba(255,255,255,0.06);
+    }
+
+    /* Rank label (small header) */
+    .contract-rank-label {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      opacity: 0.95;
+    }
+
+    /* Mission name — allow wrapping, larger and bold like reference */
+    .contract-mission-name {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0;
+      line-height: 1.15;
+      white-space: normal; /* allow wrap */
+      overflow: visible;
+      text-overflow: unset;
+    }
+
+    /* meta row: required rank + refresh duration */
+    .contract-meta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .contract-meta .meta-required { color: var(--text-secondary); }
+    .contract-meta .meta-refresh { margin-left: auto; color: var(--text-secondary); font-weight: 500; }
+
+    /* Description area: allow full wrap, no clamping */
+    .contract-desc {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.5;
+      display: block;
+      -webkit-line-clamp: unset;
+      -webkit-box-orient: unset;
+      overflow: visible;
+      text-overflow: unset;
+    }
+
+    /* Note inside card: visually separated but flows naturally */
+    .contract-note {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      background: transparent;
+      font-style: normal;
+    }
+    .contract-note strong { display:block; margin-bottom:0.25rem; color:var(--text-secondary); font-weight:600; }
