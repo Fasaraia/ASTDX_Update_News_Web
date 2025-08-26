@@ -101,34 +101,38 @@
     }
 
     .audio-wrapper {
-        position: sticky;
-        padding: 10px;
-        top: 20px;
-        margin-left: 20px;
-        height: fit-content;
-        display: flex; flex-direction: column-reverse; align-items: center;
-        justify-content: flex-start;
-        background: rgba(30,30,30,0.7);
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
+			position: sticky; padding: 10px; top: 20px; margin-left: 20px; height: fit-content;
+			display: flex; flex-direction: column-reverse; align-items: center; justify-content: flex-start;
+			background: rgba(30,30,30,0.7);
+			border-radius: 8px;border: 1px solid var(--border-color);
     }
 
     .music-player {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding-top: 5px;
     }
 
-    #volume-slider {
-        writing-mode: bt-lr; /* vertical slider */
-        -webkit-appearance: slider-vertical; /* Chrome/Safari */
-        width: 8px;
-        height: 100px;
-        background: var(--border-color);
-        border-radius: 4px;
-        cursor: pointer;
-    }
+		#volume-slider-vertical {
+			position: relative;
+			width: 20px;
+			height: 120px;
+			background: #444;
+			border-radius: 10px;
+			cursor: pointer;
+			overflow: hidden;
+		}
 
+		#volume-fill {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 50%; /* initial volume */
+			background: linear-gradient(180deg, #f4ff00, #e19d00);
+			border-radius: 8px 8px 8px 8px;
+			box-shadow: 0 0 8px #f4ff00, 0 0 16px #e19d00;
+		}
 
     .music-player button {
       background: none; border: none; font-size: 1.2rem; color: var(--text-primary);
@@ -136,7 +140,7 @@
       width: 24px; height: 24px;
     }
 
-    .music-player button:hover { color: var(--accent-green); transform: scale(1.1); }
+    .music-player button:hover { color: #ffef11; transform: scale(1.1); }
 
     .main-header {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
