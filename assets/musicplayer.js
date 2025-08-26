@@ -1,40 +1,39 @@
 const audio = document.getElementById("audio-player");
-const playPauseBtn = document.getElementById("play-pause");
-let animations = [];
+const volumeBtn = document.getElementById("start-mute-unmute");
+const slider = document.getElementById("volume-slider");
 
-function animateBars() {
-  const bars = document.querySelectorAll(".bar");
+audio.volume = 0.5;
 
-  // clear any old animations
-  animations.forEach(anim => anim.pause());
-  animations = [];
+// SVGs
+const volumeOnSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume2-icon lucide-volume-2"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><path d="M16 9a5 5 0 0 1 0 6"></path><path d="M19.364 18.364a9 9 0 0 0 0-12.728"></path></svg>`;
 
-  bars.forEach((bar, i) => {
-    const anim = anime({
-      targets: bar,
-      scaleY: [
-        { value: 2, duration: 300, easing: "easeInOutSine" },
-        { value: 1, duration: 300, easing: "easeInOutSine" }
-      ],
-      delay: i * 100,
-      loop: true,
-      autoplay: true
-    });
-    animations.push(anim);
-  });
-}
+const volumeOffSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-off-icon lucide-volume-off"><path d="M16 9a5 5 0 0 1 .95 2.293"></path><path d="M19.364 5.636a9 9 0 0 1 1.889 9.96"></path><path d="m2 2 20 20"></path><path d="m7 7-.587.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298V11"></path><path d="M9.828 4.172A.686.686 0 0 1 11 4.657v.686"></path></svg>`;
 
-playPauseBtn.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.play().then(() => {
-      playPauseBtn.textContent = "⏸";
-      animateBars();
-    }).catch(err => console.error("Playback error:", err));
+
+slider.addEventListener("input", () => {
+  if (audio.paused) audio.play().catch(err => console.warn(err));
+
+  audio.volume = slider.value / 100;
+  audio.muted = slider.value == 0;
+
+  if (audio.volume > 0) {
+    volumeBtn.innerHTML = volumeOnSVG;
   } else {
-    audio.pause();
-    playPauseBtn.textContent = "▶";
+    volumeBtn.innerHTML = volumeOffSVG;
+  }
+});
 
-    // stop animations
-    animations.forEach(anim => anim.pause());
+// Button click toggles mute/unmute
+volumeBtn.addEventListener("click", () => {
+  if (audio.paused) audio.play()
+  if (audio.muted || audio.volume === 0) {
+    audio.muted = false;
+    if (audio.volume === 0) audio.volume = 0.5; // restore default
+    slider.value = audio.volume * 100;
+    volumeBtn.innerHTML = volumeOnSVG;
+  } else {
+    audio.muted = true;
+    volumeBtn.innerHTML = volumeOffSVG;
+    slider.value = 0;
   }
 });
