@@ -299,8 +299,111 @@
     border-radius: 4px;
 }
 
+/* --- Contracts Carousel Styles --- */
+.contracts-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin: 1rem 0 0;
+  /* constrain overall carousel width */
+  width: 720px;
+  max-width: calc(100% - 40px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+.carousel-viewport {
+  overflow: hidden;
+  flex: 1 1 auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.carousel-track {
+  display: flex;
+  align-items: stretch;
+  transition: transform 400ms ease;
+  will-change: transform;
+}
+.carousel-item {
+  padding: 18px;
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  opacity: 0.6;
+  transform: scale(0.98);
+  transition: transform 300ms ease, opacity 300ms ease;
+  display: flex;
+  justify-content: center;
+}
+.carousel-item.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 5;
+}
+.carousel-nav {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.06);
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: transform 160ms ease, background 160ms ease;
+}
+.carousel-nav:hover { transform: translateY(-2px) scale(1.03); background: var(--card-bg); }
+
+/* disabled style stronger */
+.carousel-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+  filter: grayscale(0.25);
+}
+
+/* ensure the inner panel (contract-group) fits nicely inside slide */
+.carousel-item .contract-group {
+  width: 100%;
+  max-width: 680px; /* keep the panel constrained so it doesn't stretch full width too much */
+  box-sizing: border-box;
+}
+
+/* mobile: stack and use full width */
+@media (max-width: 768px) {
+  .contracts-carousel-wrapper {
+    width: 100%;
+    gap: 10px;
+    padding: 0 12px;
+  }
+  .carousel-nav { display: none; } /* rely on swipe/scroll on mobile or collapsing behavior */
+}
+
 @media (max-width: 992px) {
     .event-banner-layout {
         flex-direction: column;
     }
+}
+
+/* contract-note token colors */
+.contract-note { 
+  color: white; 
+}
+
+
+/* small responsive tweak: reduce gradient intensity on tiny screens */
+@media (max-width: 480px) {
+  .contract-note .note-gems,
+  .contract-note .note-trait {
+    font-size: 0.95em;
+  }
 }
