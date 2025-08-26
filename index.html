@@ -331,13 +331,13 @@
                             <div class="rate-tier tier-unbound">
                               <div class="rate-header">
                                 <span>Unbound</span>
-                                <span>(0.01%)</span>
+                                <span>(0.0000001%)</span>
                               </div>
                               <div class="rate-units-grid">
                                 <div class="banner-unit-card">
-                                  <span class="banner-unit-name">Unit Name</span>
+                                  <span class="banner-unit-name">Non Thinker</span>
                                   <img src="assets/units/placeholder.png" alt="Unit">
-                                  <div class="unit-chance-overlay">50%</div>
+                                  <div class="unit-chance-overlay">100%</div>
                                 </div>
                               </div>
                             </div>
@@ -356,10 +356,10 @@
                               </div>
                             </div>
                             <!-- 4 Star Tier -->
-                            <div class="rate-tier tier-4star">
+                            <div class="rate-tier tier-skins">
                               <div class="rate-header">
-                                <span>4 Star</span>
-                                <span>(16%)</span>
+                                <span>Event Skins</span>
+                                <span>(99%)</span>
                               </div>
                               <div class="rate-units-grid">
                                 <div class="banner-unit-card">
@@ -404,7 +404,7 @@
   
   <script>
     // --- START OF CONFIGURATION ---
-    const newAdditionsFilter = ["Banana", "Banana 2"];
+    const newAdditionsFilter = ["Diavolo", "Banana 2"];
     const newPassivesFilter = ["Michishibo", "Spider Boss", "Supreme Leader", "Magma Marine", "Etri"];
     // --- END OF CONFIGURATION ---
 
@@ -421,31 +421,51 @@
     const detailsPanel = document.getElementById('unit-details-panel');
     const placeholderHTML = `<div class="details-placeholder"><p>Click a unit to see details.</p></div>`;
 
-    function generatePassiveHTML(passiveData) {
-        if (typeof passiveData === 'string') { return `<p>${passiveData}</p>`; }
-        
-        // This new version maps each column to its own HTML block...
-        const passiveBlocksHTML = passiveData.columns.map(col => {
+     function generateAbilityHTML(abilityData, defaultTitle) {
+        if (!abilityData) { return ''; } 
+        if (typeof abilityData === 'string') {
+            return `<div class="ability-section"><strong>${defaultTitle}</strong><p>${abilityData}</p></div>`;
+        }
+        const abilityBlocksHTML = abilityData.columns.map(col => {
             const contentHTML = col.content.map(line => `<p>${line}</p>`).join('');
-            // We avoid using '.passive-column' to prevent the unwanted left border in a stacked layout.
             return `
                 <div> 
                     ${col.heading ? `<h3>${col.heading}</h3>` : ''} 
                     <div class="passive-column-content">${contentHTML}</div>
                 </div>
             `;
-        // ...and then joins them with a styled horizontal rule (<hr>) to act as a divider.
         }).join('<hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.25rem 0;">'); 
-
-        return `<strong>${passiveData.title || 'Passive Ability:'}</strong><div>${passiveBlocksHTML}</div>`;
+        const title = abilityData.title || defaultTitle || 'Ability:';
+        return `<div class="ability-section">${`<strong>${title}</strong><div>${abilityBlocksHTML}</div>`}</div>`;
     }
 
     function updateDetailsPanel(unitData) {
       if (!unitData) { detailsPanel.innerHTML = placeholderHTML; return; }
       const subheaderHTML = `<p class="details-subheader"><span class="rarity-${unitData.rarity.toLowerCase().replace(' ', '-')}">${unitData.rarity}</span> • <span class="subheader-placement">${unitData.placement}</span></p>`;
       const elementClass = `element-${unitData.element.toLowerCase()}`;
-      const passiveHTML = generatePassiveHTML(unitData.passive);
-      detailsPanel.innerHTML = `<div class="details-content-wrapper"><div class="details-header"><img id="details-unit-image" src="${unitData.image}" alt="${unitData.name}"><div class="details-title-group"><h2 id="details-unit-name">${unitData.name}</h2>${subheaderHTML}</div></div><div class="details-tags-container"><div class="details-tag tag-element ${elementClass}"><span>${unitData.element}</span></div><div class="details-tag tag-method"><span>${unitData.method}</span></div></div><div id="details-unit-passive">${passiveHTML}</div></div>`;
+      const manualAbilityHTML = generateAbilityHTML(unitData.manualAbility, 'Manual Ability:');
+      const passiveHTML = generateAbilityHTML(unitData.passive, 'Passive Ability:');
+      const divider = manualAbilityHTML && passiveHTML 
+        ? '<hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">' 
+        : '';
+      const allAbilitiesHTML = manualAbilityHTML + divider + passiveHTML;
+
+      detailsPanel.innerHTML = `
+        <div class="details-content-wrapper">
+            <div class="details-header">
+                <img id="details-unit-image" src="${unitData.image}" alt="${unitData.name}">
+                <div class="details-title-group">
+                    <h2 id="details-unit-name">${unitData.name}</h2>
+                    ${subheaderHTML}
+                </div>
+            </div>
+            <div class="details-tags-container">
+                <div class="details-tag tag-element ${elementClass}"><span>${unitData.element}</span></div>
+                <div class="details-tag tag-method"><span>${unitData.method}</span></div>
+            </div>
+            <div id="details-unit-passive">${allAbilitiesHTML}</div>
+        </div>`;
+      
       anime({ targets: '.details-content-wrapper', opacity: [0, 1], translateY: [10, 0], duration: 500, easing: 'easeOutExpo' });
     }
 

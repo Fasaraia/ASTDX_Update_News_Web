@@ -232,8 +232,8 @@
 .rate-tier.tier-5star .rate-header {
     border-image-source: linear-gradient(to right, rgb(255, 0, 0), #ff0, rgb(0, 255, 98), #0ff);
 }
-.rate-tier.tier-4star .rate-header {
-    border-image-source: linear-gradient(to right, #f00, #f44, #f00);
+.rate-tier.tier-skins .rate-header {
+    border-image-source: linear-gradient(to right, rgb(0, 255, 98), rgb(68, 255, 109), rgb(0, 255, 98));
 }
 
 .rate-units-grid {
@@ -283,8 +283,8 @@
 .rate-tier.tier-5star .banner-unit-card {
     background: linear-gradient(to bottom right, rgb(255, 0, 0), #ff0, rgb(0, 255, 98), #0ff);
 }
-.rate-tier.tier-4star .banner-unit-card {
-    background: #f00;
+.rate-tier.tier-skins .banner-unit-card {
+    background: rgb(0, 255, 98);
 }
 
 .unit-chance-overlay {

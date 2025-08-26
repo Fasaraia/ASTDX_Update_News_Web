@@ -1,20 +1,33 @@
 const newUnitsData = [
     {
-        name: "Banana",
+        name: "Diavolo",
         image: "assets/units/placeholder.png",
         rarity: "Unbound",
         element: "Green",
         placement: "Ground",
         method: "Banner",
+        manualAbility: {
+            title: 'Manual Ability:',
+            columns: [{
+                heading: 'Transparent World',
+                content: [
+                    "For 15 seconds, enter a state of heightened perception.",
+                    "While active:",
+                    "◦ All attacks ignore enemy defense.",
+                    "◦ Attack speed is increased by 25%."
+                ]
+            }]
+        },
         passive: {
             title: 'Passive Ability:',
             columnCount: 2, 
             columns: [{
-                heading: 'Banana',
+                heading: 'Court of the King',
                 content: [
-                    "you become a banana",
-                    "banana becomes you",
-                    "<span class='highlight-text-red'>-10%</span> humanity"
+                    "80% chance to Dodge Attacks",
+                    "If Devil dodges an ATK:",
+                    "◦ +4% DMG and +4% RNG (Up to 20%)",
+                    "◦ Counter with an Extra ATK inflicting Bleed"
                 ]
             },{
                 heading: 'Banana',
