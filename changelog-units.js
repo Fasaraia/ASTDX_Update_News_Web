@@ -138,6 +138,13 @@ const newUnitsData = [
         element: "Blue",
         placement: "Ground",
         method: "Event Scroll",
+        manualAbility: {
+            title: '',
+            columns: [{
+                heading: '',
+                content: [""]
+            }]
+        }
     },
     {
         name: "Mista",
@@ -146,6 +153,13 @@ const newUnitsData = [
         element: "Orange",
         placement: "Air",
         method: "Banner",
+        manualAbility: {
+            title: '',
+            columns: [{
+                heading: '',
+                content: [""]
+            }]
+        }
     },
     {
         name: "Narancia",
@@ -154,6 +168,13 @@ const newUnitsData = [
         element: "Red",
         placement: "Ground",
         method: "Banner",
+        manualAbility: {
+            title: '',
+            columns: [{
+                heading: '',
+                content: [""]
+            }]
+        }
     },
     {
         name: "Bruno Bucciarati",
@@ -162,6 +183,13 @@ const newUnitsData = [
         element: "Blue",
         placement: "Ground",
         method: "Banner",
+        manualAbility: {
+            title: '',
+            columns: [{
+                heading: '',
+                content: [""]
+            }]
+        }
     },
     {
         name: "Vegeta",
@@ -170,6 +198,13 @@ const newUnitsData = [
         element: "Purple",
         placement: "Air",
         method: "Banner",
+        manualAbility: {
+            title: '',
+            columns: [{
+                heading: '',
+                content: [""]
+            }]
+        }
     },
     {
         name: "Risotto Nero",
@@ -178,6 +213,13 @@ const newUnitsData = [
         element: "Purple",
         placement: "Ground",
         method: "Banner",
+        manualAbility: {
+            title: '',
+            columns: [{
+                heading: '',
+                content: [""]
+            }]
+        }
     },
     {
         name: "Michishibo",
