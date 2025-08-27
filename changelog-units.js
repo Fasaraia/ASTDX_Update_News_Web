@@ -108,7 +108,25 @@ const newUnitsData = [
                     "Levels up Fighter Eagle with New Moves and Perks when reaching certain Damage Thresholds!",
                     "Level 1: 20% Dodge Chance, +10% Crit Chance (275,000 - 674,999 DMG)",
                     "Level 2: 35% Dodge Chance, Poison Status Effect (675,000 -1,249,999 DMG)",
-                    "Level 3: 50% Dodge Chance, +20% Crit Chance (1,250,000+)",
+                    "Level 3: 50% Dodge Chance, +20% Crit Chance (1,250,000+)"
+                ]
+            }]
+        }
+    },
+    {
+        name: "Giorno",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Green",
+        placement: "Ground",
+        method: "Banner",
+        manualAbility: {
+            title: 'Manual Ability',
+            columns: [{
+                heading: 'Life Giver',
+                content: [
+                    "<span class='cd-desc'>(120s CD) - Local</span>",
+                    "Cleanses any Debuffs or Negative Status Effects on units within Star Boys Range, Including Star Boy himself."
                 ]
             }]
         }
@@ -235,4 +253,5 @@ const newUnitsData = [
         ]
         }
     }
+    
 ];
