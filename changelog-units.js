@@ -125,7 +125,7 @@ const newUnitsData = [
             columns: [{
                 heading: 'Life Giver',
                 content: [
-                    "<span class='cd-desc>(120s CD) - Local</span>",
+                    "<span class='cd-desc'>(120s CD) - Local</span>",
                     "Cleanses any Debuffs or Negative Status Effects on units within Star Boy's Range, Including Star Boy himself."
                 ]
             }]
