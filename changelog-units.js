@@ -3,7 +3,7 @@ const newUnitsData = [
         name: "Diavolo",
         image: "assets/units/placeholder.png",
         rarity: "Unbound",
-        element: "Green",
+        element: "Red",
         placement: "Ground",
         method: "Banner",
         manualAbility: {
@@ -42,7 +42,7 @@ const newUnitsData = [
         name: "Archer",
         image: "assets/units/placeholder.png",
         rarity: "5 Star",
-        element: "Green",
+        element: "Orange",
         placement: "Ground",
         method: "Banner",
         manualAbility: {
@@ -60,7 +60,7 @@ const newUnitsData = [
         name: "Jotaro",
         image: "assets/units/placeholder.png",
         rarity: "5 Star",
-        element: "Green",
+        element: "Purple",
         placement: "Ground",
         method: "Banner",
         manualAbility: {
@@ -130,6 +130,54 @@ const newUnitsData = [
                 ]
             }]
         }
+    },
+    {
+        name: "Posiden",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Blue",
+        placement: "Ground",
+        method: "Event Scroll",
+    },
+    {
+        name: "Mista",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Orange",
+        placement: "Air",
+        method: "Banner",
+    },
+    {
+        name: "Narancia",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Red",
+        placement: "Ground",
+        method: "Banner",
+    },
+    {
+        name: "Bruno Bucciarati",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Blue",
+        placement: "Ground",
+        method: "Banner",
+    },
+    {
+        name: "Vegeta",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Purple",
+        placement: "Air",
+        method: "Banner",
+    },
+    {
+        name: "Risotto Nero",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Purple",
+        placement: "Ground",
+        method: "Banner",
     },
     {
         name: "Michishibo",
