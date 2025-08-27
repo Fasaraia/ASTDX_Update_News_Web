@@ -102,7 +102,7 @@ const newUnitsData = [
         manualAbility: {
             title: 'Manual Ability:',
             columns: [{
-                heading: 'Spiral Mech',
+                heading: 'Level Up!',
                 content: [
                     "<span class='cd-desc'>(5s CD) - Local</span>",
                     "Levels up Fighter Eagle with New Moves and Perks when reaching certain Damage Thresholds!",
@@ -137,14 +137,7 @@ const newUnitsData = [
         rarity: "5 Star",
         element: "Blue",
         placement: "Ground",
-        method: "Event Scroll",
-        manualAbility: {
-            title: '',
-            columns: [{
-                heading: '',
-                content: [""]
-            }]
-        }
+        method: "Event Scroll"
     },
     {
         name: "Mista",
@@ -152,14 +145,7 @@ const newUnitsData = [
         rarity: "5 Star",
         element: "Orange",
         placement: "Air",
-        method: "Banner",
-        manualAbility: {
-            title: '',
-            columns: [{
-                heading: '',
-                content: [""]
-            }]
-        }
+        method: "Banner"
     },
     {
         name: "Narancia",
@@ -167,14 +153,7 @@ const newUnitsData = [
         rarity: "5 Star",
         element: "Red",
         placement: "Ground",
-        method: "Banner",
-        manualAbility: {
-            title: '',
-            columns: [{
-                heading: '',
-                content: [""]
-            }]
-        }
+        method: "Banner"
     },
     {
         name: "Bruno Bucciarati",
@@ -182,14 +161,7 @@ const newUnitsData = [
         rarity: "5 Star",
         element: "Blue",
         placement: "Ground",
-        method: "Banner",
-        manualAbility: {
-            title: '',
-            columns: [{
-                heading: '',
-                content: [""]
-            }]
-        }
+        method: "Banner"
     },
     {
         name: "Vegeta",
@@ -197,14 +169,7 @@ const newUnitsData = [
         rarity: "5 Star",
         element: "Purple",
         placement: "Air",
-        method: "Banner",
-        manualAbility: {
-            title: '',
-            columns: [{
-                heading: '',
-                content: [""]
-            }]
-        }
+        method: "Banner"
     },
     {
         name: "Risotto Nero",
@@ -212,14 +177,7 @@ const newUnitsData = [
         rarity: "5 Star",
         element: "Purple",
         placement: "Ground",
-        method: "Banner",
-        manualAbility: {
-            title: '',
-            columns: [{
-                heading: '',
-                content: [""]
-            }]
-        }
+        method: "Banner"
     },
     {
         name: "Michishibo",
