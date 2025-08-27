@@ -114,6 +114,24 @@ const newUnitsData = [
         }
     },
     {
+        name: "Giorno",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Green",
+        placement: "Ground",
+        method: "Banner",
+        manualAbility: {
+            title: "Manual Ability",
+            columns: [{
+                heading: "Life Giver",
+                content: [
+                    "<span class='cd-desc>(120s CD) - Local",
+                    "Cleanses any Debuffs or Negative Status Effects on units within Star Boy's Range, Including Star Boy himself."
+                ]
+            }]
+        }
+    },
+    {
         name: "Michishibo",
         image: "assets/units/unbound_units/kokushiboU_icon.png",
         rarity: "Unbound",
@@ -235,4 +253,5 @@ const newUnitsData = [
         ]
         }
     }
+    
 ];
