@@ -232,8 +232,11 @@
 .rate-tier.tier-5star .rate-header {
     border-image-source: linear-gradient(to right, rgb(255, 0, 0), #ff0, rgb(0, 255, 98), #0ff);
 }
-.rate-tier.tier-skins .rate-header {
-    border-image-source: linear-gradient(to right, rgb(0, 255, 98), rgb(68, 255, 109), rgb(0, 255, 98));
+.rate-tier.tier-4star .rate-header {
+    border-image-source: linear-gradient(to bottom right, rgb(255, 0, 0), rgb(255, 30, 0), rgb(151, 0, 0), rgb(179, 0, 0));
+}
+.rate-tier.tier-3star .rate-header {
+    border-image-source: linear-gradient(to bottom right, rgb(255, 251, 0), rgb(175, 172, 1), rgb(214, 211, 0), rgb(148, 145, 2));;
 }
 
 .rate-units-grid {
@@ -283,8 +286,11 @@
 .rate-tier.tier-5star .banner-unit-card {
     background: linear-gradient(to bottom right, rgb(255, 0, 0), #ff0, rgb(0, 255, 98), #0ff);
 }
-.rate-tier.tier-skins .banner-unit-card {
-    background: rgb(0, 255, 98);
+.rate-tier.tier-4star .banner-unit-card {
+    background: linear-gradient(to bottom right, rgb(255, 0, 0), rgb(255, 30, 0), rgb(151, 0, 0), rgb(179, 0, 0));
+}
+.rate-tier.tier-3star .banner-unit-card {
+    background: linear-gradient(to bottom right, rgb(255, 251, 0), rgb(175, 172, 1), rgb(214, 211, 0), rgb(148, 145, 2));
 }
 
 .unit-chance-overlay {
