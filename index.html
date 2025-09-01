@@ -616,7 +616,7 @@
      updateControls();
      goTo(0);
    }
-
+    //  Timeline scrolling
     const circle = document.querySelector('.timeline-circle'); 
     const container = document.querySelector('.timeline-container');
 
@@ -625,15 +625,17 @@
       const containerTop = container.offsetTop;
       const containerHeight = container.offsetHeight;
       const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
 
-      // progress from top (0) to bottom (1)
-      let progress = (scrollTop - containerTop) / containerHeight;
-      progress = Math.min(Math.max(progress, 0), 1);
+      const scrollableDistance = documentHeight - windowHeight - containerTop;
+
+      let progress = (scrollTop - containerTop) / scrollableDistance;
+      progress = Math.min(Math.max(progress, 0), 0.999);
 
       anime({
         targets: circle,
         translateY: progress * containerHeight,
-        duration: 200,
+        duration: 300,
         easing: 'linear'
       });
     }
