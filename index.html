@@ -42,8 +42,10 @@
           <p class="sub-text">Made by the ASTDX Questions Team</p>
           
           <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-circle"></div>
             <div class="timeline-item">
-              <div class="timeline-marker"></div>
+              </div>
               <div class="timeline-content">
                 <h2 class="update-title">Update 6</h2>
                 <p class="update-date">August XX 2025</p>
@@ -353,7 +355,6 @@
             </div>
           </div>
 
-        </div>
       </section>
       <section class="audio-wrapper">
         <audio id="audio-player" src="assets/All Star Tower Defense Lobby Music (Roblox) [LaTale Music - May Be Happy].mp3" loop autoplay muted></audio>
@@ -615,6 +616,33 @@
      updateControls();
      goTo(0);
    }
+
+    const circle = document.querySelector('.timeline-circle'); 
+    const container = document.querySelector('.timeline-container');
+
+    function animateTimelineFull() {
+      const scrollTop = window.scrollY;
+      const containerTop = container.offsetTop;
+      const containerHeight = container.offsetHeight;
+      const windowHeight = window.innerHeight;
+
+      // progress from top (0) to bottom (1)
+      let progress = (scrollTop - containerTop) / containerHeight;
+      progress = Math.min(Math.max(progress, 0), 1);
+
+      anime({
+        targets: circle,
+        translateY: progress * containerHeight,
+        duration: 200,
+        easing: 'linear'
+      });
+    }
+
+    window.addEventListener('scroll', animateTimelineFull);
+    window.addEventListener('resize', animateTimelineFull);
+    animateTimelineFull();
+
+
   </script>
 
   <script src="assets/musicplayer.js"></script>
