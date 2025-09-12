@@ -172,6 +172,46 @@ const newUnitsData = [
         method: "Banner"
     },
     {
+        name: "Death the Kid",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Purple",
+        placement: "Air",
+        method: "Banner"
+    },
+    {
+        name: "Kafka Hibino",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Green",
+        placement: "Ground",
+        method: "Banner"
+    },
+    {
+        name: "Naofumi",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Orange",
+        placement: "Air",
+        method: "Banner"
+    },
+    {
+        name: "Seint Seiya",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Blue",
+        placement: "Ground",
+        method: "Banner"
+    },
+    {
+        name: "David Martinez",
+        image: "assets/units/placeholder.png",
+        rarity: "5 Star",
+        element: "Red",
+        placement: "Ground",
+        method: "Banner"
+    },
+    {
         name: "Risotto Nero",
         image: "assets/units/placeholder.png",
         rarity: "5 Star",
