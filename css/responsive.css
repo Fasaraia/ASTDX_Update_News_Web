@@ -1,0 +1,70 @@
+/* --- Responsive Design --- */
+
+/* Laptops and smaller desktops */
+@media (max-width: 1200px) {
+  .changelog-layout {
+    grid-template-columns: 1fr;
+  }
+  .unit-details-panel-instance {
+    position: static;
+    top: auto;
+    max-height: 450px; /* Give a reasonable max-height when stacked */
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+    .layout {
+        gap: 16px;
+        padding-right: 0;
+    }
+    .content-card {
+        min-width: 300px;
+    }
+    .audio-wrapper {
+        display: none; /* Hide audio for more space */
+    }
+    .event-banner-layout {
+        flex-direction: column;
+    }
+}
+
+/* Larger mobile phones */
+@media (max-width: 768px) {
+  body {
+    padding: 2rem 1rem;
+  }
+  .content-wrapper {
+    padding: 25px;
+  }
+  .hiragana-background .text-layer {
+    font-size: 12rem;
+  }
+  .details-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .audio-wrapper {
+    position: fixed; top: 50%; right: 10px; transform: translateY(-50%);
+    width: 60px; padding: 10px; border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  .carousel-nav {
+    display: none;
+  }
+  .contracts-carousel-wrapper {
+    width: 100%;
+    padding: 0;
+  }
+  .unit-details-panel-instance {
+      padding: 14px;
+      border-radius: 10px;
+  }
+}
+
+/* Smaller mobile phones */
+@media (max-width: 480px) {
+  .details-unit-info { padding: 12px; gap: 10px; }
+  #details-unit-image { width: 78px; height: 78px; }
+  #details-unit-name { font-size: 1.4rem; }
+}
