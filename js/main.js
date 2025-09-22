@@ -45,7 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (newPassivesGrid) App.Components.populateGrid(newPassivesGrid, data.newPassives, data.allUnits);
         if (bannerContainer) App.Components.populateBanner(bannerContainer, data.bannerRates);
         if (contractsTrack) App.Components.populateContracts(contractsTrack, data.contracts);
-        if (detailsPanel) detailsPanel.innerHTML = App.Components.createDetailsPanel(null);
+        if (detailsPanel) {
+            // insert the initial placeholder/details content
+            detailsPanel.innerHTML = App.Components.createDetailsPanel(null);
+
+            // constrain the panel to the initial placeholder height (measure once)
+            if (!detailsPanel.dataset.initialMaxHeight) {
+                // measure after paint to get accurate height
+                requestAnimationFrame(() => {
+                    const h = Math.round(detailsPanel.getBoundingClientRect().height || 0);
+                    if (h > 0) {
+                        detailsPanel.style.maxHeight = `${h}px`;
+                        detailsPanel.dataset.initialMaxHeight = h;
+                    }
+                });
+            }
+        }
 
         // Append the wrapper (not the raw element) so spacing and scoping apply
         target.appendChild(wrapper);
@@ -55,47 +70,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Setup event listeners scoped to this wrapper / update
         if (mainContentColumn && detailsPanel && unitSelectorEl) {
-    // Helper that sets the details panel's max-height to the unit selector's height
-    const syncPanelHeight = () => {
-        const selectorHeight = unitSelectorEl.offsetHeight;
-        if (selectorHeight > 0) {
-            detailsPanel.style.maxHeight = `${selectorHeight}px`;
+            // Click handler — update details; do NOT change the panel max-height.
+            // The panel was constrained to its initial placeholder height above and will scroll internally.
+            mainContentColumn.addEventListener('click', (event) => {
+                const card = event.target.closest('.unit-card');
+                if (!card) return;
+
+                // Deselect all other cards on the page
+                document.querySelectorAll('.unit-card.selected').forEach(selected => selected.classList.remove('selected'));
+                card.classList.add('selected');
+
+                const unitName = card.dataset.unitName;
+                const unitData = window.loadedUnitData.find(u => u.name === unitName);
+
+                detailsPanel.innerHTML = App.Components.createDetailsPanel(unitData);
+
+                // Animate the new content in (inner scroll container animates)
+                const detailsInner = detailsPanel.querySelector('.details-content-wrapper');
+                if (detailsInner) {
+                    anime({ targets: detailsInner, opacity: [0, 1], translateY: [10, 0], duration: 500, easing: 'easeOutExpo' });
+                }
+                // keep the previously measured max-height so content will scroll instead of expanding the panel
+            });
         }
-    };
-
-    // Click handler — update details and then sync height for the new content
-    mainContentColumn.addEventListener('click', (event) => {
-        const card = event.target.closest('.unit-card');
-        if (!card) return;
-
-        // Deselect all other cards on the page
-        document.querySelectorAll('.unit-card.selected').forEach(selected => selected.classList.remove('selected'));
-        card.classList.add('selected');
-
-        const unitName = card.dataset.unitName;
-        const unitData = window.loadedUnitData.find(u => u.name === unitName);
-
-        detailsPanel.innerHTML = App.Components.createDetailsPanel(unitData);
-        
-        // Animate the new content in
-        const detailsInner = detailsPanel.querySelector('.details-content-wrapper');
-        if (detailsInner) {
-            anime({ targets: detailsInner, opacity: [0, 1], translateY: [10, 0], duration: 500, easing: 'easeOutExpo' });
-        }
-    });
-
-    // Observe unit selector size changes so the details panel follows it
-    if (typeof ResizeObserver !== 'undefined') {
-        const ro = new ResizeObserver(syncPanelHeight);
-        ro.observe(unitSelectorEl);
-    }
-    
-    // Recalc on window resize as well
-    window.addEventListener('resize', syncPanelHeight);
-
-    // Initial sync
-    syncPanelHeight();
-}
 
         // Initialize contracts carousel for this wrapper (scoped)
         if (contractsTrack) App.Components.initContractsCarousel(wrapper);

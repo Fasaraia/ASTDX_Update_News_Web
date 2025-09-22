@@ -214,6 +214,56 @@ const App = {
              updateDimensions(); 
              goToSlide(0, false);
         },
+
+        syncDetailsPanelHeight: (opts = {}) => {
+            const rootSelector = opts.rootSelector || 'body';
+            const contentSelector = opts.contentSelector || '.content-box';
+            const detailSelector = opts.detailSelector || '.unit-details-panel-instance';
+            const root = document.querySelector(rootSelector);
+            if (!root) return;
+
+            const update = () => {
+                const contents = Array.from(root.querySelectorAll(contentSelector));
+                const details = Array.from(root.querySelectorAll(detailSelector));
+                if (!contents.length || !details.length) return;
+
+                const maxH = contents.reduce((m, el) => {
+                   const h = el.getBoundingClientRect().height;
+                    return Math.max(m, h);
+                }, 0);
+
+                details.forEach(d => {
+                    d.style.boxSizing = 'border-box';
+                    d.style.height = `${maxH}px`;
+                    d.style.minHeight = `${maxH}px`;
+                });
+            };
+
+            // debounce via rAF for smooth resize handling
+            let rafId = null;
+            const debounced = () => {
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(update);
+            };
+
+            window.addEventListener('resize', debounced);
+
+            // observe subtree mutations so dynamic content changes update heights
+            const observer = new MutationObserver(debounced);
+            observer.observe(root, { childList: true, subtree: true, attributes: true, characterData: true });
+
+            // initial run
+            debounced();
+
+            // return a handle to allow manual update / cleanup
+            return {
+                update,
+                disconnect: () => {
+                    window.removeEventListener('resize', debounced);
+                    observer.disconnect();
+                }
+            };
+        },
         
         initAnimations: () => {
           const header = document.querySelector('.main-header');

@@ -130,9 +130,21 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
   position: sticky;
   top: 4rem;
-  align-self: start;
-  max-height: 500px; /* Fallback, JS controls this */
-  overflow: hidden; /* Parent panel hides overflow */
+  /* allow this panel to stretch to match sibling height in flex/grid layouts */
+  align-self: stretch;
+  /* let content scroll inside, but allow flexbox to size children properly */
+  overflow: auto;
+  box-sizing: border-box;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+}
+/* Ensure the inner scrolling wrapper can shrink/grow inside flex containers */
+.details-content-wrapper {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 8px;
+  min-height: 0; /* important for flex children so overflow works correctly */
 }
 .details-placeholder {
   display: flex; justify-content: center; align-items: center;
