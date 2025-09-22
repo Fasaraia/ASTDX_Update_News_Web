@@ -124,7 +124,7 @@
   background-color: rgba(28, 28, 28, 0.72);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 18px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
@@ -180,6 +180,13 @@
 /* --- Abilities in Details Panel --- */
 .ability-section {
     overflow: hidden;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-top: 1.5rem;
 }
 .ability-section > strong {
   display: block; font-size: 1.1rem; font-weight: 600;
