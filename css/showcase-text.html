@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Text Styles Showcase</title>
+
+    <!-- Import the Fredoka font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- 
+      IMPORTANT: This links the stylesheet that the script will parse AND style the page with.
+    -->
+    <link rel="stylesheet" href="text.css">
+    
+    <style>
+        /* These styles are only for the showcase layout itself */
+        body {
+            font-family: "Fredoka", sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+        h1, h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .showcase-section {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .style-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .style-item:last-child {
+            border-bottom: none;
+        }
+        .style-item .example {
+            font-size: 1.2rem;
+        }
+        .style-item code {
+            background-color: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.9rem;
+        }
+        .loading-message {
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Text Styles Showcase</h1>
+    <p>This page dynamically reads <code>text.css</code> and generates a preview for every class it finds. Add a new class to the CSS file and refresh to see it here!</p>
+
+    <!-- The JavaScript will automatically populate this container -->
+    <main id="showcase-container">
+        <p class="loading-message">Loading styles from text.css...</p>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cssFilePath = 'text.css';
+            const container = document.getElementById('showcase-container');
+
+            // Fetches the CSS file and processes its content
+            fetch(cssFilePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Could not load text.css: ${response.statusText}`);
+                    }
+                    return response.text();
+                })
+                .then(cssText => {
+                    container.innerHTML = ''; // Clear loading message
+                    
+                    // Regex to find section comments like /* ===== SECTION: Title ===== */
+                    const sectionRegex = /\/\*\s*=====\s*SECTION:\s*(.*?)\s*=====\s*\*\//g;
+                    
+                    // Regex to find all class names like .my-class
+                    const classRegex = /\.([a-zA-Z0-9_-]+)(?=\s*[,{])/g;
+                    
+                    let lastIndex = 0;
+                    let match;
+
+                    // Iterate through each section comment found in the CSS
+                    while ((match = sectionRegex.exec(cssText)) !== null) {
+                        const sectionTitle = match[1].trim();
+                        const sectionContent = cssText.substring(lastIndex, match.index);
+                        
+                        // Process the content found BEFORE this section header
+                        processContent(sectionContent, 'General Styles');
+
+                        lastIndex = match.index + match[0].length;
+                    }
+                    // Process any remaining content after the last section
+                    processContent(cssText.substring(lastIndex), 'Miscellaneous');
+
+
+                    function processContent(content, fallbackTitle) {
+                        // Find all class names within this chunk of CSS
+                        const classes = [...content.matchAll(classRegex)].map(m => m[1]);
+                        const uniqueClasses = [...new Set(classes)];
+
+                        if (uniqueClasses.length === 0) return;
+
+                        // Create the HTML elements for the showcase section
+                        const sectionEl = document.createElement('div');
+                        sectionEl.className = 'showcase-section';
+                        
+                        const titleEl = document.createElement('h2');
+                        // Use the section title if it's not the first, unnamed block
+                        titleEl.textContent = (content === cssText.substring(0, cssText.indexOf('/* ====='))) ? fallbackTitle : sectionRegex.exec(cssText.substring(cssText.indexOf(content)-100))?.[1] || fallbackTitle;
+                        
+                        // A slightly hacky way to get the title for the correct section.
+                        // We reset regex lastIndex and find the title corresponding to the content.
+                        sectionRegex.lastIndex = 0;
+                        let currentSectionTitle = fallbackTitle;
+                        while((match = sectionRegex.exec(cssText)) !== null) {
+                             if(cssText.substring(match.index).startsWith(content.trim())) {
+                                 currentSectionTitle = match[1].trim();
+                                 break;
+                             }
+                        }
+                        titleEl.textContent = currentSectionTitle;
+
+
+                        sectionEl.appendChild(titleEl);
+
+                        uniqueClasses.forEach(className => {
+                            // Create the container for one style item (example + code)
+                            const itemEl = document.createElement('div');
+                            itemEl.className = 'style-item';
+
+                            // Create the styled text example
+                            const exampleEl = document.createElement('span');
+                            exampleEl.className = `example ${className}`;
+                            exampleEl.textContent = 'Styled Text';
+
+                            // Create the code tag to display the class name
+                            const codeEl = document.createElement('code');
+                            codeEl.textContent = `.${className}`;
+                            
+                            itemEl.appendChild(exampleEl);
+                            itemEl.appendChild(codeEl);
+                            sectionEl.appendChild(itemEl);
+                        });
+
+                        container.appendChild(sectionEl);
+                    }
+                })
+                .catch(error => {
+                    container.innerHTML = `<p style="color: red;"><strong>Error:</strong> ${error.message}</p>`;
+                    console.error('Error fetching or parsing CSS:', error);
+                });
+        });
+    </script>
+
+</body>
+</html>

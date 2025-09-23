@@ -1,0 +1,62 @@
+/*
+  ================================================================
+  CSS TEXT STYLES UTILITY KIT
+  - Global Variables & Setup
+  - Simple Text Colors
+  - Gradient Text Effects
+  - Badges (Background with curved edges)
+  - Rarity, Highlight & Status Styles
+  ================================================================
+*/
+
+/* --- Global Variables & Basic Setup --- */
+:root {
+  /* Define variables used in the classes below */
+  --accent-green: #51cf66;
+  --accent-blue: #4dabf7;
+  --accent-red: #ff6b6b;
+  --text-secondary: #a0a0a0;
+}
+
+.rarity-unbound {
+  background-image: linear-gradient(45deg, #c0392b, #8e44ad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+.rarity-5-star {
+  background-image: linear-gradient(45deg, #ff2400, #e8b71d, #1de840, #1ddde8, #2b1de8, #dd00f3, #ff2400);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow-flow 5s ease-in-out infinite;
+  font-weight: 600;
+}
+
+/* Keyframes for the animated rainbow effect */
+@keyframes rainbow-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.highlight-text-green { color: var(--accent-green); font-weight: 500; }
+.highlight-text-blue { color: var(--accent-blue); font-weight: 500; }
+.highlight-text-red { color: var(--accent-red); font-weight: 500; }
+.highlight-text-yellow { color: #ffee00; font-weight: 500; }
+
+.highlight-text-purplegradient { background-image: linear-gradient(45deg, #c0392b, #8e44ad); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500; }
+.highlight-text-orangegradient { background-image: linear-gradient(45deg, #c9461e, #e4964e); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500; }
+.highlight-text-bluegradient { background-image: linear-gradient(45deg, #1d86e8, #1ddde8); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500; }
+
+.cd-desc { font-size: 0.95rem !important; color: var(--text-secondary) !important; line-height: 1.6 !important; margin: 0; }
+
+/* Status effect tags with background colors */
+.highlight-decelerate { background-color: #f0ad4e; color: #1e1e1e; font-weight: 600; padding: 2px 5px; border-radius: 4px; }
+.highlight-explosive { background-color: #d9534f; color: #e0e0e0; font-weight: 600; padding: 2px 5px; border-radius: 4px; }
+.highlight-powerful { background-color: #C70039; color: #e0e0e0; font-weight: 600; padding: 2px 5px; border-radius: 4px; }
+.highlight-rage { background-color: #900C3F; color: #e0e0e0; font-weight: 600; padding: 2px 5px; border-radius: 4px; }
+.highlight-regenerator { background-color: #5cb85c; color: #1e1e1e; font-weight: 600; padding: 2px 5px; border-radius: 4px; }
+.highlight-cloner { background-color: #5bc0de; color: #1e1e1e; font-weight: 600; padding: 2px 5px; border-radius: 4px; }
