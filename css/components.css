@@ -130,27 +130,130 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
   position: sticky;
   top: 4rem;
-  /* allow this panel to stretch to match sibling height in flex/grid layouts */
   align-self: stretch;
-  /* let content scroll inside, but allow flexbox to size children properly */
-  overflow: auto;
+  
+  /* CRITICAL: Force fixed dimensions and prevent overflow */
   box-sizing: border-box;
-  height: auto;
-  max-height: none;
+  height: auto; /* Will be set by JS */
+  max-height: none; /* Will be set by JS */
+  min-height: 0;
+  overflow: hidden; /* Prevent any content from bleeding out */
+  
+  /* Ensure flexbox behavior for internal layout */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollable content wrapper - must be constrained */
+.details-content-wrapper {
+  /* CRITICAL: Take remaining space and enable scrolling */
+  flex: 1 1 0;
+  min-height: 0; /* Allow flex child to shrink below content size */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+  
+  /* Ensure proper box model */
+  box-sizing: border-box;
+}
+
+/* Ensure all child content respects the container */
+.details-unit-info {
+  /* Don't let unit info grow indefinitely */
+  flex-shrink: 0;
   min-height: 0;
 }
-/* Ensure the inner scrolling wrapper can shrink/grow inside flex containers */
-.details-content-wrapper {
-  height: 100%;
-  overflow-y: auto;
-  padding-right: 8px;
-  min-height: 0; /* important for flex children so overflow works correctly */
+
+.details-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-shrink: 0; /* Header should never shrink */
 }
+
+.details-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+  flex-shrink: 0; /* Tags should never shrink */
+}
+
+/* Ability sections - allow them to scroll if too long */
+.ability-section {
+  overflow: visible; /* Let content flow naturally within the scrollable container */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 1.5rem;
+  flex-shrink: 0; /* Don't compress ability sections */
+}
+
+/* Passive columns should wrap properly */
+.passive-columns {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns, 1), 1fr);
+  gap: 1.5rem;
+  /* Allow content to flow naturally */
+  min-height: 0;
+}
+
+.passive-column-content {
+  /* Ensure text wraps properly */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.passive-column-content p {
+  font-size: 0.95rem !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.6 !important;
+  margin: 0 0 0.5em;
+  word-break: break-word;
+  /* Prevent text from creating horizontal overflow */
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* Enhanced scrollbar for better UX */
+.details-content-wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+.details-content-wrapper::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.details-content-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #444, #666);
+  border-radius: 8px;
+  border: 2px solid rgba(0,0,0,0.25);
+}
+
+.details-content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5a5a5a, #8b8b8b);
+}
+
+/* Firefox scrollbar */
+.details-content-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #666 rgba(0,0,0,0.1);
+}
+
+/* Placeholder styling */
 .details-placeholder {
-  display: flex; justify-content: center; align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   color: var(--text-secondary);
   font-style: italic;
+  flex: 1 1 auto;
 }
 .details-content-wrapper {
   height: 100%;

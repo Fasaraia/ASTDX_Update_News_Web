@@ -215,55 +215,113 @@ const App = {
              goToSlide(0, false);
         },
 
-        syncDetailsPanelHeight: (opts = {}) => {
-            const rootSelector = opts.rootSelector || 'body';
-            const contentSelector = opts.contentSelector || '.content-box';
-            const detailSelector = opts.detailSelector || '.unit-details-panel-instance';
-            const root = document.querySelector(rootSelector);
-            if (!root) return;
+// Replace the syncDetailsPanelHeight function in your App.Components with this:
 
-            const update = () => {
-                const contents = Array.from(root.querySelectorAll(contentSelector));
-                const details = Array.from(root.querySelectorAll(detailSelector));
-                if (!contents.length || !details.length) return;
+syncDetailsPanelHeight: (opts = {}) => {
+    const rootSelector = opts.rootSelector || 'body';
+    const mainContentSelector = opts.mainContentSelector || '.main-content'; // Adjust this selector to match your main content column
+    const detailSelector = opts.detailSelector || '.unit-details-panel-instance';
+    
+    const root = document.querySelector(rootSelector);
+    if (!root) return;
 
-                const maxH = contents.reduce((m, el) => {
-                   const h = el.getBoundingClientRect().height;
-                    return Math.max(m, h);
-                }, 0);
+    let initialHeight = null;
+    let isInitialized = false;
 
-                details.forEach(d => {
-                    d.style.boxSizing = 'border-box';
-                    d.style.height = `${maxH}px`;
-                    d.style.minHeight = `${maxH}px`;
-                });
-            };
+    const setInitialHeight = () => {
+        const mainContent = root.querySelector(mainContentSelector);
+        if (!mainContent) return false;
+        
+        // Get the natural height of the main content column
+        const rect = mainContent.getBoundingClientRect();
+        initialHeight = rect.height;
+        isInitialized = true;
+        return true;
+    };
 
-            // debounce via rAF for smooth resize handling
-            let rafId = null;
-            const debounced = () => {
-                if (rafId) cancelAnimationFrame(rafId);
-                rafId = requestAnimationFrame(update);
-            };
+    const updateDetailsPanelHeight = () => {
+        const detailsPanels = Array.from(root.querySelectorAll(detailSelector));
+        if (!detailsPanels.length || !isInitialized || !initialHeight) return;
 
-            window.addEventListener('resize', debounced);
+        detailsPanels.forEach(panel => {
+            panel.style.boxSizing = 'border-box';
+            panel.style.height = `${initialHeight}px`;
+            panel.style.minHeight = `${initialHeight}px`;
+            panel.style.maxHeight = `${initialHeight}px`;
+        });
+    };
 
-            // observe subtree mutations so dynamic content changes update heights
-            const observer = new MutationObserver(debounced);
-            observer.observe(root, { childList: true, subtree: true, attributes: true, characterData: true });
+    const initialize = () => {
+        // Try to set initial height
+        if (setInitialHeight()) {
+            updateDetailsPanelHeight();
+        } else {
+            // If main content isn't ready yet, try again after a short delay
+            setTimeout(initialize, 100);
+        }
+    };
 
-            // initial run
-            debounced();
+    // Handle window resize - maintain the same height ratio
+    let resizeTimeout;
+    const handleResize = () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (setInitialHeight()) {
+                updateDetailsPanelHeight();
+            }
+        }, 150);
+    };
 
-            // return a handle to allow manual update / cleanup
-            return {
-                update,
-                disconnect: () => {
-                    window.removeEventListener('resize', debounced);
-                    observer.disconnect();
+    window.addEventListener('resize', handleResize);
+
+    // Observer for dynamic content changes that might affect main content height
+    const observer = new MutationObserver((mutations) => {
+        let shouldUpdate = false;
+        
+        mutations.forEach(mutation => {
+            // Check if the mutation affects the main content area
+            if (mutation.target.matches && mutation.target.matches(mainContentSelector)) {
+                shouldUpdate = true;
+            } else if (mutation.target.querySelector && mutation.target.querySelector(mainContentSelector)) {
+                shouldUpdate = true;
+            }
+        });
+
+        if (shouldUpdate) {
+            // Debounce updates
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (setInitialHeight()) {
+                    updateDetailsPanelHeight();
                 }
-            };
+            }, 100);
+        }
+    });
+
+    observer.observe(root, { 
+        childList: true, 
+        subtree: true, 
+        attributes: true,
+        attributeFilter: ['style', 'class']
+    });
+
+    // Initialize
+    initialize();
+
+    // Return cleanup function
+    return {
+        update: () => {
+            if (setInitialHeight()) {
+                updateDetailsPanelHeight();
+            }
         },
+        disconnect: () => {
+            window.removeEventListener('resize', handleResize);
+            observer.disconnect();
+            clearTimeout(resizeTimeout);
+        }
+    };
+},
         
         initAnimations: () => {
           const header = document.querySelector('.main-header');
