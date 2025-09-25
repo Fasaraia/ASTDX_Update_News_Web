@@ -21,7 +21,7 @@ const updateData = {
     allUnits: [
         {
             name: "Meduka",
-            image: "assets/units/placeholder.png",
+            image: "assets/units/5_star_units/meduka_icon.png",
             rarity: "5 Star",
             element: "Green",
             placement: "Air",
@@ -43,7 +43,7 @@ const updateData = {
         },
         {
             name: "Renitsu",
-            image: "assets/units/placeholder.png",
+            image: "assets/units/5_star_units/renitsu_icon.png",
             rarity: "5 Star",
             element: "Orange",
             placement: "Ground",
@@ -63,7 +63,7 @@ const updateData = {
         },
         {
             name: "Flaming Tiger",
-            image: "assets/units/placeholder.png",
+            image: "assets/units/primal_units/flaming_tiger_icon.png",
             rarity: "Primal",
             element: "Red",
             placement: "Ground",
@@ -108,7 +108,7 @@ const updateData = {
         },
         {
             name: "Shirtless Devil",
-            image: "assets/units/placeholder.png",
+            image: "assets/units/5_star_units/shirtless_devil_icon.png",
             rarity: "5 Star",
             element: "Blue",
             placement: "Air",
@@ -130,7 +130,7 @@ const updateData = {
         },
         {
             name: "Gakukai",
-            image: "assets/units/placeholder.png",
+            image: "assets/units/5_star_units/gakukai_icon.png",
             rarity: "5 Star",
             element: "Purple",
             placement: "Ground",
@@ -150,7 +150,7 @@ const updateData = {
         },
         {
             name: "Blood Queen",
-            image: "assets/units/placeholder.png",
+            image: "assets/units/5_star_units/blood_queen_icon.png",
             rarity: "5 Star",
             element: "Purple",
             placement: "Ground",
