@@ -8,7 +8,7 @@ const updateData = {
     // --- UNIT FILTERS FOR GRIDS ---
     // All new units will be displayed in one grid for this update.
     newAdditions: [
-        "Meduka", "Renitsu", "Flaming Tiger", "Shirtless Devil", "Gakukai", "Blood Queen"
+        "Meduka", "Renitsu", "Flaming Tiger", "Shirtless Devil", "Gakukai", "Blood Queen", "Flower Trainer"
     ],
     // No separate "New Passives" section for this update
     newPassives: [], 
@@ -141,9 +141,9 @@ const updateData = {
                 columns: [{
                     heading: 'Corrosive Black Lightning',
                     content: [
-                        "Regenerates 10 HP Every 3 Seconds, Up to 150 HP",
-                        "30% Chance to Dodge Attacks",
-                        "Gakukai’s Attacks have a 20% Chance to Inflict Black Electrokinesis, Which applies visual cracks to Enemies. Black Electrokinesis lasts Forever and Makes Enemies take 2% More Damage Per Stack, and can be Stacked up to 5 Times for a total of 10% More Damage (No visuals)"
+                        "Regenerates <span class='highlight-text-green'>10</span> HP Every 3 Seconds, Up to <span class='highlight-text-green'>150</span> HP",
+                        "<span class='highlight-text-green'>30%</span> Chance to Dodge Attacks",
+                        "Gakukai’s Attacks have a <span class='highlight-text-green'>20%</span> Chance to Inflict Black Electrokinesis, Which applies visual cracks to Enemies. Black Electrokinesis lasts Forever and Makes Enemies take 2% More Damage Per Stack, and can be Stacked up to 5 Times for a total of 10% More Damage (No visuals)"
                     ]
                 }],
             }
@@ -161,23 +161,53 @@ const updateData = {
                 columns: [{
                     heading: 'Twisted Blood Queen’s Rampage',
                     content: [
-                        "Every Attack sends a Blood Slash that deals 30% of Unohana’s Damage towards the Strongest Enemy in her Range. If this Enemy is a Boss Enemy, it instead deals 50% of Unohana’s Damage. [Blood Slash Aoe Size: Line 4]",
+                        "Every Attack sends a Blood Slash that deals <span class='highlight-text-green'>30%</span> of Unohana’s Damage towards the Strongest Enemy in her Range. If this Enemy is a Boss Enemy, it instead deals <span class='highlight-text-green'>50%</span> of Unohana’s Damage. [Blood Slash Aoe Size: Line 4]",
                         "For Every Enemy Unohana Kills:",
-                        "◦ 1% Damage (Up to 20%)",
-                        "◦ 0.5% Crit (Up to 10%)",
-                        "Upon Reaching Max Stacks, Unohana enters a Frenzy, getting an additional 25% Crit and An Additional Attack Every 3 Attacks for 20s. Once this ends, her stacks are reset"
+                        "◦ <span class='highlight-text-green'>1%</span> Damage (Up to <span class='highlight-text-green'>20%</span>)",
+                        "◦ <span class='highlight-text-green'>0.5%</span> Crit (Up to <span class='highlight-text-green'>10%</span>)",
+                        "Upon Reaching Max Stacks, Unohana enters a Frenzy, getting an additional <span class='highlight-text-green'>25%</span> Crit and An Additional Attack Every <span class='highlight-text-green'>3</span> Attacks for <span class='highlight-text-green'>20s</span>. Once this ends, her stacks are reset"
                     ]
                 },
                 {
                     heading: 'Beauty in Blood',
                     content: [
-                        "Every Time Unohana Attacks 5 Times: ",
-                        "Generate 1 Blood Orb Circling Around Unohana, Up to 4",
+                        "Every Time Unohana Attacks 5</span> Times: ",
+                        "Generate <span class='highlight-text-green'>1</span> Blood Orb Circling Around Unohana, Up to <span class='highlight-text-green'>4</span>",
                         "For Every Blood Orb currently held:",
-                        "◦ 7.5% Damage",
+                        "◦ <span class='highlight-text-green'>7.5%</span> Damage",
                         "Whenever Unohana is attacked:",
-                        "◦ Consume 1 Blood Orb to do the Following:",
-                        "  ◦ Counter Attack with a Blood Splatter that deals 40% of Unohana’s Damage (if allies are in range are stunned, consumes an blood orb to remove stun)"
+                        "◦ Consume <span class='highlight-text-green'>1</span> Blood Orb to do the Following:",
+                        "  ◦ Counter Attack with a Blood Splatter that deals <span class='highlight-text-green'>40%</span> of Unohana’s Damage (if allies are in range are stunned, consumes an blood orb to remove stun)"
+                    ]
+                }]
+            }
+        },
+        {
+            name: "Flower Trainer",
+            image: "assets/units/exclusive_units/flower_trainer_icon.png",
+            rarity: "Exclusive",
+            element: "Green",
+            placement: "Ground",
+            method: "Tower",
+            passive: {
+                title: 'Passive Ability:',
+                columnCount: 2,
+                columns: [{
+                    heading: 'Beautiful Poisonous Elegance',
+                    content: [
+                        "<span class='highlight-text-green'>60%</span> Chance to Dodge",
+                        "Flower Trainer’s Poison Has a Stronger Toxin, Making it deal <span class='highlight-text-green'>35%</span> Damage over 8 Seconds and Preventing Enemies from Regenerating",
+                        "Whenever Flower Trainer is Stunned:",
+                        "◦ Apply <span class='highlight-text-green'>3</span> Stacks of Poison to the Enemy that Attacked Her"
+                    ]
+                },
+                {
+                    heading: 'Sweet and Motivating Beauty',
+                    content: [
+                        "All Slayer Units Within Flower Trainer’s Range Get a <span class='highlight-text-green'>10%</span> Chance to Dodge",
+                        "All Slayer Units Within Flower Trainer’s Range get a <span class='highlight-text-green'>10%</span> Dmg Boost",
+                        "All Slayer Units Within Flower Trainer’s Range get a <span class='highlight-text-green'>5%</span> Chance to perform an Additional Attack",
+                        "<span class='cd-desc'>[Does Not Stack with Multiple Flower Trainers, and Flower Trainer does not get this Herself]</span>"
                     ]
                 }]
             }
