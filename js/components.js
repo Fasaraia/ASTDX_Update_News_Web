@@ -11,13 +11,17 @@ const App = {
             // render each column as its own stacked ability-section (Passive 1, Passive 2, ...)
             if (context === 'details' && /passive/i.test(defaultTitle) && cols.length > 1) {
                 return cols.map((col, idx) => {
-                    const contentHTML = Array.isArray(col.content) ? col.content.map(line => `<p>${line}</p>`).join('') : '';
-                    const sectionTitle = col.heading ? col.heading : `${title} ${idx + 1}`;
+                    const contentHTML = Array.isArray(col.content) 
+                        ? col.content.map(line => `<p>${line}</p>`).join('') 
+                        : '';
                     return `
                         <div class="ability-section">
-                            <strong>${sectionTitle}</strong>
+                            <strong>${title}</strong> <!-- parent title stays here -->
                             <div class="passive-columns" style="--grid-columns: 1;">
-                                <div class="passive-column-content">${contentHTML}</div>
+                                <div class="passive-column-content">
+                                    ${col.heading ? `<h3>${col.heading}</h3>` : ''}
+                                    ${contentHTML}
+                                </div>
                             </div>
                         </div>
                     `;

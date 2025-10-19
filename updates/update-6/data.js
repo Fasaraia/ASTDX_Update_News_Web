@@ -8,7 +8,7 @@ const updateData = {
     // --- UNIT FILTERS FOR GRIDS ---
     // All new units will be displayed in one grid for this update.
     newAdditions: [
-        "Meduka", "Renitsu", "Flaming Tiger", "Shirtless Devil", "Gakukai", "Blood Queen", "Flower Trainer"
+        "Meduka", "Renitsu", "Flaming Tiger", "Shirtless Devil", "Gakukai", "Blood Queen", "Flower Trainer", "Frost Moon", "Miracle Maker"
     ],
     // No separate "New Passives" section for this update
     newPassives: [], 
@@ -208,6 +208,80 @@ const updateData = {
                         "All Slayer Units Within Flower Trainer’s Range get a <span class='highlight-text-green'>10%</span> Dmg Boost",
                         "All Slayer Units Within Flower Trainer’s Range get a <span class='highlight-text-green'>5%</span> Chance to perform an Additional Attack",
                         "<span class='cd-desc'>[Does Not Stack with Multiple Flower Trainers, and Flower Trainer does not get this Herself]</span>"
+                    ]
+                }]
+            }
+        },
+        {
+            name: "Frost Moon",
+            image: "assets/units/exclusive_units/frost_moon_icon.png",
+            rarity: "Exclusive",
+            element: "Blue",
+            placement: "Ground",
+            method: "Frost Moon Portal",
+            passive: {
+                title: 'Passive Ability:',
+                columnCount: 2,
+                columns: [{
+                    heading: 'Flamboyant Upper Lunar',
+                    content: [
+                        "Regenerates <span class='highlight-text-green'>10 HP</span> Every 3 Seconds, Maxing at <span class='highlight-text-green'>150 HP</span>",
+                        "Stuns Inflicted on Frost Moon are <span class='highlight-text-green'>20%</span> Shorter",
+                        "All Upper Lunar Units in Frost Moons’s Range get <span class='highlight-text-green'>5%</span> Damage and <span class='highlight-text-green'>5%</span> Crit Chance",
+                        "<span class='cd-desc'>[Does Not Stack with Multiple Doumas]</span>",
+                        "For Every Wave passed:",
+                        "◦ <span class='highlight-text-green'>2.5%</span> Damage (Up to  <span class='highlight-text-green'>25%</span>)",
+                        "◦ <span class='highlight-text-green'>1%</span> Range (Up to  <span class='highlight-text-green'>10%</span>)"
+                    ]
+                },
+                {
+                    heading: 'Bodhisattva of Mahapadma',
+                    content: [
+                        "Douma’s <span class='highlight-text-blue'>Freeze</span> lasts 40% Longer",
+                        "Every time Douma Attacks 3 Times:",
+                        "◦ Generate 2 Ice Lotus on Douma (Up to 20)",
+                        "All Slayer Units Within Flower Trainer’s Range get a <span class='highlight-text-green'>5%</span> Chance to perform an Additional Attack",
+                        "◦  Consume 10 Ice Lotus to Generate an Ice Lotus Tree that takes the attack, Freezes the Attacker and Applies Chilled"
+                    ]
+                }]
+            },
+            manualAbility: {
+                title: 'Manual Ability:',
+                columns: [{
+                    heading: 'Demon Metamorphosis',
+                    content: [
+                        "<span class='cd-desc'>N/A</span>",
+                        "Requires Flower Trainer to be in range to be used (any upgrade)",
+                        "◦ Consume all MAX upg Douma in range and combine their DMG stat",
+                        "◦ Summon 1 Frost Moon Clone that acts as a seperate unit",
+                        "◦ Increase HP to <span class='highlight-text-green'>666</span>",
+                        "◦ All attacks deal poison",
+                        "◦ Lose <span class='highlight-text-green'>75</span> HP per attack. Reaching 0 HP deletes Douma and the Frost Moon Clone"
+                    ]
+                }]
+            }
+        },
+        {
+            name: "Miracle Maker",
+            image: "assets/units/5_star_units/miracle_maker_icon.png",
+            rarity: "5 Star",
+            element: "Red",
+            placement: "Ground",
+            method: "Starpass",
+            passive: {
+                title: 'Passive Ability:',
+                columnCount: 1,
+                columns: [{
+                    heading: 'Towering Giant',
+                    content: [
+                        "Miracle Maker Takes <span class='highlight-text-green'>20%</span> Less Damage Taken from Attacks",
+                        "Miracle Maker’s Size continuously grows with Each New Move Obtained, Every Time Miracle Maker Grows in Size:",
+                        "◦ <span class='highlight-text-green'>20%</span> Less Damage Taken from Attacks",
+                        "◦ <span class='highlight-text-green'>20%</span> Less Damage Taken from Attacks",
+                        "Upon Reaching Max Size:",
+                        "For Every Wave passed:",
+                        "◦ Enemies will always Target Miracle Maker, regardless of how many units are in their range when Attacking",
+                        "◦ Miracle Maker becomes Hybrid"
                     ]
                 }]
             }
